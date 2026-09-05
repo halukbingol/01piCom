@@ -1,0 +1,8 @@
+# LLS-trace.txt : state@|@text
+0@|@op                 head n1 n2
+0@|@create head        null -  -
+1@|@create n1          null null -
+2@|@head -> n1          n1  null -
+3@|@create n2           n1  null null
+4@|@n2 -> n1            n1  null n1
+5@|@head -> n2           n2  null n1

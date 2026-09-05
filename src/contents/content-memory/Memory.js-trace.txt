@@ -1,0 +1,7 @@
+# Memory-trace.txt : state@|@text
+0@|@op             a  b  c  d
+0@|@               u  u  u  u
+1@|@a = 42;        42 u  u  u
+2@|@(settle)       42 u  u  u
+3@|@c = a;         42 u  42 u
+4@|@(settle)       42 u  42 u

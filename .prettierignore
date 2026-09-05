@@ -1,0 +1,10 @@
+dist/
+node_modules/
+coverage/
+*.zip
+
+# Content artifacts are display data, formatted for display not by Prettier.
+src/contents/**/*.js
+src/contents/**/*.txt
+src/contents/**/*.html
+src/contents/**/*.java

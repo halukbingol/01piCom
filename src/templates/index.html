@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <!-- Row 1: title -->
+      <header id="div-title" class="row row--title">
+        directAccess-20260805T0730/
+      </header>
+
+      <!-- Row 2: navigation -->
+      <nav id="div-navigation" class="row row--navigation"></nav>
+
+      <!-- Row 3: debug (title + pane) -->
+      <section class="row row--debug" data-debug-pane hidden>
+        <div class="pane__title">debug</div>
+        <ul id="debug" class="pane pane--debug"></ul>
+      </section>
+
+      <!-- Row 4: page -->
+      <main id="div-page" class="row row--page">
+        <div id="div-page-top" class="page-top">
+          <!-- Left column: code + download -->
+          <div id="div-page-top-left" class="page-col page-col--left">
+            <div class="pane-group">
+              <div class="pane__title">code</div>
+              <pre id="code" class="pane pane--code"></pre>
+            </div>
+            <div class="pane-group pane-group--download">
+              <div class="pane__title">download</div>
+              <div id="download" class="pane pane--download"></div>
+            </div>
+          </div>
+
+          <!-- Center column: board -->
+          <div id="div-page-top-center" class="page-col page-col--center">
+            <div class="pane-group">
+              <div class="pane__title">board</div>
+              <div id="board" class="pane pane--board">
+                <svg
+                  id="MySvg"
+                  viewBox="-150 -150 300 300"
+                  width="100%"
+                  height="100%"
+                  role="img"
+                  aria-label="Board"
+                ></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column: description -->
+          <div id="div-page-top-right" class="page-col page-col--right">
+            <div class="pane-group">
+              <div class="pane__title">description</div>
+              <div id="description" class="pane pane--description"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="div-page-bottom" class="page-bottom">
+          <div class="pane-group">
+            <div class="pane__title">trace</div>
+            <div id="trace" class="pane pane--trace"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

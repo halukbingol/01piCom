@@ -1,0 +1,21 @@
+# config.txt for contTestB
+
+# required
+stepsNO,4
+
+# download pane
+download,invisible
+fileDownload,TestB-download.txt
+
+# code pane
+fileCode,TestB-code.java
+fileCodeHighlight,TestB-highlight.txt
+
+# description pane
+fileDescription,TestB-desc.html
+
+# board pane
+fileBoard,TestB-board.ts
+
+# trace pane
+fileTrace,TestB-trace.txt

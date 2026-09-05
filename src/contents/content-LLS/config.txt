@@ -1,0 +1,21 @@
+# config.txt for content-LLS
+
+# required
+stepsNO,6
+
+# download pane
+download,invisible
+
+# code pane
+fileCode,LLS.js
+fileCodeHighlight,LLS.js-ch.txt
+
+# description pane
+fileDescription,LLS.js-decr.html
+
+# board pane
+fileBoard,board.ts
+
+# trace pane
+#trace,invisible
+fileTrace,LLS.js-trace.txt

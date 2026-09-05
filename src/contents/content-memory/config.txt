@@ -1,0 +1,21 @@
+# config.txt for content-memory
+
+# required
+stepsNO,3
+
+# download pane
+download,invisible
+
+# code pane
+fileCode,Memory.js
+fileCodeHighlight,Memory.js-ch.txt
+
+# description pane
+fileDescription,Memory.js-decr.html
+
+# board pane
+fileBoard,board.ts
+
+# trace pane
+#trace,invisible
+fileTrace,Memory.js-trace.txt

@@ -1,0 +1,42 @@
+# Normalize line endings.
+#
+# `* text=auto` makes Git store every text file with LF in the repository and
+# check it out with the platform's native convention. The explicit rules below
+# pin the project's own file types to LF on checkout too, so diffs never show
+# phantom whole-file changes when files move between machines (Windows/macOS/Linux).
+
+# Default: let Git detect text vs binary; store text as LF.
+* text=auto
+
+# Source and config — always LF.
+*.ts    text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.java  text eol=lf
+*.css   text eol=lf
+*.html  text eol=lf
+*.txt   text eol=lf
+*.md    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+
+# Shell scripts must stay LF even on Windows checkouts.
+*.sh    text eol=lf
+
+# Windows batch files stay CRLF.
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+
+# Binary — never touch.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.pdf   binary
+*.zip   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.eot   binary

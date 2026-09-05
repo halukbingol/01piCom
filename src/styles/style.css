@@ -1,0 +1,413 @@
+/*
+ * ZhbSimple — dark theme, responsive, phone-friendly.
+ *
+ * Layout: four stacked rows (title, navigation, debug, page). The page row
+ * splits into a 3-column top (code+download / board / description) and a
+ * full-width bottom (trace). Responsive rules collapse columns and hide panes
+ * as the viewport narrows (1200 / 920 / 600px).
+ */
+
+:root {
+  --ink: #0b1015;
+  --ink-raised: #121a22;
+  --ink-sunken: #0d141b;
+  --line: #23303b;
+  --text: #e6eef4;
+  --text-dim: #8ba0b0;
+  --accent: #35e0d8;
+  --accent-strong: #17b8b0;
+  --prev: #e5484d;
+  --next: #3fb950;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--ink);
+  color: var(--text);
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.row {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--ink-raised);
+}
+
+/* Row 1: title */
+.row--title {
+  padding: 0.9rem 1.2rem;
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+/* Row 2: navigation */
+.row--navigation {
+  padding: 0.5rem 0.75rem;
+}
+
+/* Row 3: debug */
+.row--debug {
+  padding: 0.5rem 0.75rem;
+}
+
+.pane__title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin-bottom: 0.35rem;
+}
+
+.pane {
+  background: var(--ink-sunken);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  overflow: auto;
+}
+
+.pane--debug {
+  margin: 0;
+  list-style: decimal inside;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  max-height: 8rem;
+}
+
+/* Row 4: page */
+.row--page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+
+.page-top {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.page-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.pane-group {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.pane-group .pane {
+  flex: 1;
+}
+
+.pane--code {
+  margin: 0;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  min-height: 6rem;
+}
+
+.code-line {
+  padding: 0 0.3rem;
+  border-left: 2px solid transparent;
+  white-space: pre;
+}
+
+.code-line.is-highlight {
+  background: rgba(53, 224, 216, 0.14);
+  border-left-color: var(--accent);
+}
+
+/* Description pane shows the current step's content (raw HTML from its <li>). */
+.pane--description p {
+  margin: 0 0 0.5rem;
+  line-height: 1.55;
+}
+
+.pane--description ol,
+.pane--description ul {
+  margin: 0.3rem 0;
+  padding-left: 1.4rem;
+  line-height: 1.5;
+}
+
+.pane--description code {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: rgba(53, 224, 216, 0.12);
+  padding: 0 0.25em;
+  border-radius: 4px;
+}
+
+.trace-line {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  white-space: pre;
+}
+
+.pane--board {
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  aspect-ratio: 1 / 1;
+}
+
+.pane--board svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Zhb drawable base + flag-driven modes (visibility/highlight/animate) --- */
+
+/* Default shape/label rendering. */
+.zhb__shape {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.zhb__label {
+  fill: currentColor;
+  font-size: 16px;
+  stroke: none;
+}
+
+/* Node id label, sitting on the top edge of the box. */
+.zhb__label--id {
+  font-size: 11px;
+  fill: var(--text-dim);
+}
+
+/* Variable-name label to the left of a memory cell. */
+.zhb__label--name {
+  fill: var(--text-dim);
+}
+
+/* Thick short bar (null node marker). */
+.zhb__line--thick {
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+/* Link routing lines, arrowheads and ground symbol. */
+.zhb__linkline,
+.zhb__linkhead {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.zhb__ground {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* Visibility: keep the element in the DOM/layout but hide it. */
+.zhb.zhb--hidden {
+  visibility: hidden;
+}
+
+/* Highlight: bright color + thicker strokes. */
+.zhb.zhb--highlighted {
+  color: var(--next);
+}
+
+.zhb.zhb--highlighted .zhb__shape {
+  stroke: var(--next);
+  stroke-width: 3;
+}
+
+.zhb.zhb--highlighted rect.zhb__shape {
+  fill: rgba(63, 185, 80, 0.15);
+}
+
+.zhb.zhb--highlighted .zhb__label {
+  fill: var(--next);
+  font-weight: 700;
+}
+
+/* Animate: while an object is being hand-drawn, hide its arrowheads until the
+   line reveal completes (the JS toggles zhb--drawing during the reveal). A
+   subtle fade-in also applies to freshly animated objects. */
+.zhb.zhb--drawing .zhb__link-head {
+  opacity: 0;
+}
+
+.zhb__link-head {
+  transition: opacity 0.2s ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zhb__link-head {
+    transition: none;
+  }
+}
+
+.pane--description,
+.pane--trace,
+.pane--download {
+  font-size: 0.9rem;
+  color: var(--text);
+  min-height: 6rem;
+}
+
+.pane--trace div,
+.pane--description {
+  line-height: 1.5;
+}
+
+.page-bottom {
+  display: flex;
+}
+
+.page-bottom .pane-group {
+  flex: 1;
+}
+
+/* ---- Navigation SVG buttons ---- */
+
+.nav-btn {
+  cursor: pointer;
+}
+
+.nav-btn:focus-visible {
+  outline: none;
+}
+
+.nav-btn:focus-visible .nav-state__circle,
+.nav-btn:focus-visible .nav-tri {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
+.nav-tri--previous {
+  fill: var(--prev);
+}
+
+.nav-tri--next {
+  fill: var(--next);
+}
+
+.nav-glyph {
+  fill: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.nav-state__circle {
+  fill: var(--ink-sunken);
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+
+.nav-state__label {
+  fill: var(--text-dim);
+  font-size: 15px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.nav-btn.is-active .nav-state__circle {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+.nav-btn.is-active .nav-state__label {
+  fill: var(--ink);
+}
+
+/* ---- Responsive breakpoints ---- */
+
+/* < 1200px: trace hidden; description moves to the bottom row. */
+@media (max-width: 1199.98px) {
+  .pane--trace,
+  .page-bottom .pane-group .pane__title {
+    display: none;
+  }
+
+  .page-bottom .pane-group {
+    display: none;
+  }
+
+  .page-top {
+    grid-template-columns: 1fr 1.4fr;
+  }
+
+  /* description relocates under the top row */
+  .page-col--right {
+    grid-column: 1 / -1;
+  }
+}
+
+/* < 920px: trace and download hidden. */
+@media (max-width: 919.98px) {
+  .pane-group--download {
+    display: none;
+  }
+}
+
+/* < 600px: code, board, description stack in one column. */
+@media (max-width: 599.98px) {
+  .page-top {
+    grid-template-columns: 1fr;
+  }
+
+  .page-col--right {
+    grid-column: auto;
+  }
+
+  .pane--board {
+    aspect-ratio: auto;
+    min-height: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

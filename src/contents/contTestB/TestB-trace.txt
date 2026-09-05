@@ -1,0 +1,6 @@
+# TestB-trace.txt : state@|@text
+0@|@op            a  b
+0@|@              u  u
+1@|@int a = 7;    7  u
+2@|@int b = 5;    7  5
+3@|@a = b;        5  5
