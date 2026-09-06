@@ -1,0 +1,8 @@
+# Arrays-highlight.txt : one line per step
+nop
+1
+2
+3
+4
+5
+6

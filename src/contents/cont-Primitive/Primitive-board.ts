@@ -25,27 +25,40 @@ import { ZhbMemory } from '../../lib/board/ZhbMemory';
  * so a full replay (`runTo`) rebuilds identical state regardless of the route.
  */
 
+
 /** This content's board coordinate space (min-x min-y width height). */
-const VIEW_BOX = '-150 -150 300 300';
+// const VIEW_BOX = '0 0 400 400';
+const VIEW_BOX = '0 0 200 200';
 
-/** Left edge of the memory column. */
-const X_MEM = -25;
-/** Top edge of the memory column. */
-const Y_MEM = -40;
-/** Location index of variable `a`. */
-const A = 0;
-/** Location index of variable `b`. */
-const B = 1;
+/** symbolTable. */
+// Module-level registry, recreated by {@link resetBoard}.
+let symbolTable: ZhbMemory;
+const ST_W = 80;
+const ST_X = 5;
+const ST_Y = 5;
 
-/** Module-level registry, recreated by {@link resetBoard}. */
+/* memory */
+// Module-level registry, recreated by {@link resetBoard}.
 let memory: ZhbMemory;
+const MEM_X = ST_X + ST_W + 60;
+const MEM_Y = ST_Y;
+
+// variable `a`
+const memA = 0;
+const stA = 0;
+// variable `b`
+const memB = 1;
+const stB = 1;
+
+
 
 /**
  * Recreate the drawable registry. Called by the executor before every replay
  * from state 0, so replayed steps reference freshly-created drawables.
  */
 export function resetBoard(): void {
-  memory = new ZhbMemory(2, X_MEM, Y_MEM);
+  symbolTable = new ZhbMemory(3, ST_X, ST_Y, ST_W);
+  memory = new ZhbMemory(4, MEM_X, MEM_Y);
 }
 
 // Create the initial registry at module load, so the first render has objects.
@@ -57,25 +70,78 @@ resetBoard();
  */
 export const arrSteps: StepFn[] = [];
 
+// statements
+let iCount = 0;
+
+
 // arrSteps[0]: declare a and b — mount the empty two-cell memory.
-arrSteps[0] = (board: Board): void => {
+const i_0 = iCount++;
+arrSteps[i_0] = (board: Board): void => {
+  // start empty
   board.getSvg().setAttribute('viewBox', VIEW_BOX);
+  board.add(symbolTable);
   board.add(memory);
+
+  // highlight
+  symbolTable.highlightOff();
+  memory.highlightOff();
 };
 
-// arrSteps[1]: int a = 7;
-arrSteps[1] = (): void => {
-  memory.assignLiteral(A, '7');
+// int a;
+const i_int_a = iCount++;
+arrSteps[i_int_a] = (): void => {
+  // value changed
+  symbolTable.assignLiteral(stA, 'a : int');
+
+  // highlight
+  symbolTable.highlight(stA, true);
 };
 
-// arrSteps[2]: int b = 5;
-arrSteps[2] = (): void => {
-  memory.assignLiteral(B, '5');
+// a = 4;
+const i_aE4 = iCount++;
+arrSteps[i_aE4] = (): void => {
+  // value changed
+  memory.assignLiteral(memA, '4');
+
+  // highlight
+  symbolTable.highlight(stA, false);
+  //
+  memory.highlight(memA, true);
 };
 
-// arrSteps[3]: a = b;
-arrSteps[3] = (): void => {
-  memory.assignVariable(A, B);
+// int b = 7;
+const i_int_bE7 = iCount++;
+arrSteps[i_int_bE7] = (): void => {
+  // value changed
+  symbolTable.assignLiteral(stB, 'b : int');
+  memory.assignLiteral(memB, '7');
+
+  // highlight
+  memory.highlight(memA, false);
+  //
+  symbolTable.highlight(stB, true);
+  memory.highlight(memB, true);
+};
+
+// b = 8;
+const i_bE8 = iCount++;
+arrSteps[i_bE8] = (): void => {
+  // value changed
+  memory.assignLiteral(memB, '8');
+  // highlight
+  symbolTable.highlight(stB, false);
+  memory.highlight(memB, false);
+  //
+  memory.highlight(memB, true);
+};
+
+// b = a;
+const bEa = iCount++;
+arrSteps[bEa] = (): void => {
+  memory.assignVariable(memB, memA);
+  // highlight
+  memory.highlight(memA, true);
+  memory.highlight(memB, true);
 };
 
 /**

@@ -1,5 +1,8 @@
 # config.txt for contTestB
 
+# title
+title,conTestB
+
 # required
 stepsNO,4
 

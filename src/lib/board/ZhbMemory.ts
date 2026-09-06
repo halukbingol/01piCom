@@ -1,5 +1,5 @@
-import { ZhbDrawable } from "./ZhbDrawable";
-import { ZhbLocation } from "./ZhbLocation";
+import { ZhbDrawable } from './ZhbDrawable';
+import { ZhbLocation } from './ZhbLocation';
 
 export class ZhbMemory extends ZhbDrawable {
   private static readonly W_DEFAULT = 50;
@@ -19,7 +19,7 @@ export class ZhbMemory extends ZhbDrawable {
     for (let i = 0; i < size; i += 1) {
       //   const cellY = y + i * h;
       const cellY = y + i * (h + ZhbMemory.H_GAP);
-      this.arrLocation[i] = new ZhbLocation(x, cellY, w, h, String(i), "");
+      this.arrLocation[i] = new ZhbLocation(x, cellY, w, h, String(i), '');
     }
   }
 
@@ -46,8 +46,7 @@ export class ZhbMemory extends ZhbDrawable {
     }
   }
 
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ instructions
-
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V instructions
   public assignLiteral(i: number, value: string): void {
     this.setContent(i, value);
   }
@@ -55,4 +54,18 @@ export class ZhbMemory extends ZhbDrawable {
   public assignVariable(i: number, j: number): void {
     this.setContent(i, this.getLocation(j).getContent());
   }
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A instructions
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V highlight
+  public highlight(i: number, value: boolean): void {
+    const loc = this.arrLocation[i];
+    loc.setHighlighted(value);
+  }
+
+  public highlightOff(): void {
+    this.arrLocation.forEach((element) => {
+      element.setHighlighted(false);
+    });
+  }
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A highlight
 }

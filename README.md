@@ -28,12 +28,13 @@ parameter:
 http://localhost:8080/?content=content-MyContent
 ```
 
-Replace `content-MyContent` with a content id. The ids that ship are
-`content-memory` (the default) and `content-LLS`:
+Replace `content-MyContent` with a content id. The ids that ship include
+`content-memory` (the default), `content-LLS`, and `content-Arrays`:
 
 ```txt
 http://localhost:8080/?content=content-memory
 http://localhost:8080/?content=content-LLS
+http://localhost:8080/?content=content-Arrays
 ```
 
 Opening the base URL with no `?content=` (or an unknown id) loads the first

@@ -26,6 +26,10 @@ A CSV (key,value per line). `stepsNO` is the number of steps including step 0.
 starting with `#` is a full comment line, and a `# ...` after a value is
 stripped.
 
+**Title.** An optional `title,<text>` line sets both the HTML page title
+(`document.title`) and the `#div-title` header text when this content is loaded.
+Without it, the markup's build-time defaults are kept.
+
 **Panes.** For each of `code`, `board`, `description`, and `trace`, the config
 must EITHER define the pane's related file(s) OR mark the pane `invisible`. (The
 `download` and `debug` panes have no files; they are simply visible unless marked
@@ -35,6 +39,9 @@ Example:
 
 ```txt
 # config.txt
+
+# html page title
+title,My Content
 
 # required
 stepsNO,3

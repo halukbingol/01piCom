@@ -21,6 +21,9 @@ import { ZhbConstant } from '../../lib/board/ZhbConstant';
 
 // ---------------------------------------------------------------- geometry ---
 
+/** This content's board coordinate space (min-x min-y width height). */
+const VIEW_BOX = '-150 -150 300 300';
+
 /** Left edge of the memory column. */
 const xMem = -25;
 /** Top edge of the memory column. */
@@ -42,6 +45,7 @@ const NAMES = ['a', 'b', 'c', 'd'];
  */
 function clearSvg(board: Board): void {
   const svg = board.getSvg();
+  svg.setAttribute('viewBox', VIEW_BOX);
   while (svg.firstChild !== null) {
     svg.removeChild(svg.firstChild);
   }

@@ -1,5 +1,8 @@
 # config.txt for content-LLS
 
+#title
+title,content-LLS
+
 # required
 stepsNO,6
 
@@ -7,15 +10,15 @@ stepsNO,6
 download,invisible
 
 # code pane
-fileCode,LLS.js
-fileCodeHighlight,LLS.js-ch.txt
+fileCode,LLS-code.js
+fileCodeHighlight,LLS-highlight.txt
 
 # description pane
-fileDescription,LLS.js-decr.html
+fileDescription,LLS-desc.html
 
 # board pane
-fileBoard,board.ts
+fileBoard,LLS-board.ts
 
 # trace pane
 #trace,invisible
-fileTrace,LLS.js-trace.txt
+fileTrace,LLS-trace.txt

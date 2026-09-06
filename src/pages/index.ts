@@ -1,16 +1,30 @@
-import { ZintStepByStepGUI } from '../lib/navigation/ZintStepByStepGUI';
-import { ZintStepByStepContent } from '../lib/navigation/ZintStepByStepContent';
-import type { ContentModule, PaneName } from '../lib/content/contentTypes';
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V content
+
+/**
+ * contents
+ */
 import { content as contentMemory } from '../contents/content-memory';
 import { content as contentLLS } from '../contents/content-LLS';
 import { content as contentTestB } from '../contents/contTestB';
+import { content as contentArrays } from '../contents/content-Arrays';
+import { content as contentPrimitive } from '../contents/cont-Primitive';
 
 /** Registry of available contents, keyed by id. */
 const CONTENTS: Record<string, ContentModule> = {
   'content-memory': contentMemory,
   'content-LLS': contentLLS,
   contTestB: contentTestB,
+  'content-Arrays': contentArrays,
+  'cont-Primitive': contentPrimitive,
 };
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A content
+
+
+
+import { ZintStepByStepGUI } from '../lib/navigation/ZintStepByStepGUI';
+import { ZintStepByStepContent } from '../lib/navigation/ZintStepByStepContent';
+import { ZhbConstant } from '../lib/board/ZhbConstant';
+import type { ContentModule, PaneName } from '../lib/content/contentTypes';
 
 /**
  * Hide the DOM group enclosing a pane. The debug pane is special: its container
@@ -36,10 +50,11 @@ function hidePane(pane: PaneName): void {
 }
 
 /**
- * Entry point. Selects a content (via `?content=<id>`, default LLS), applies the
- * content's pane-visibility settings, wires the navigation GUI to a content
- * renderer, and fills the descriptive panes. Debug mode is enabled when the URL
- * contains `?debug` (unless the content hides the debug pane).
+ * Entry point. Selects a content (via `?content=<id>`, default
+ * `ZhbConstant.DEFAULT_CONTENT`), applies the content's pane-visibility
+ * settings, wires the navigation GUI to a content renderer, and fills the
+ * descriptive panes. Debug mode is enabled when the URL contains `?debug`
+ * (unless the content hides the debug pane).
  */
 function main(): void {
   const nav = document.getElementById('div-navigation');
@@ -58,7 +73,21 @@ function main(): void {
   const module =
     requested !== null && CONTENTS[requested] !== undefined
       ? CONTENTS[requested]
-      : contentMemory;
+      : CONTENTS[ZhbConstant.DEFAULT_CONTENT];
+
+  // Title: use the content's `title` from config.txt when it defines one for
+  // both the browser tab (`document.title`) and the `#div-title` header;
+  // otherwise keep the markup's build-time defaults. The browser tab title
+  // always carries the `ZhbConstant.SITE` suffix.
+  const configTitle = module.config.title;
+  if (configTitle !== undefined && configTitle !== '') {
+    document.title = configTitle;
+    const header = document.getElementById('div-title');
+    if (header !== null) {
+      header.textContent = configTitle;
+    }
+  }
+  document.title += ZhbConstant.SITE;
 
   // Apply per-content pane visibility (all panes visible unless marked hidden).
   const hidden = module.config.hiddenPanes;

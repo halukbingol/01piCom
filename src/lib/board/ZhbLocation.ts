@@ -86,7 +86,7 @@ export class ZhbLocation extends ZhbDrawable {
     label.setAttribute('y', String(cy));
     label.setAttribute('text-anchor', 'end');
     label.setAttribute('dominant-baseline', 'middle');
-    label.setAttribute('class', 'zhb__label');
+    label.setAttribute('class', 'zhb__label zhb__label--name');
     label.textContent = this.locationNo;
     group.appendChild(label);
 

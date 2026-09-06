@@ -3,12 +3,12 @@ import {
   languageFromFilename,
 } from '../../lib/content/contentConfig';
 import type { ContentModule } from '../../lib/content/contentTypes';
-import { steps, resetBoard } from './board';
+import { steps, resetBoard } from './Memory-board';
 import configText from './config.txt';
-import codeText from './Memory.js';
-import highlightText from './Memory.js-ch.txt';
-import descriptionText from './Memory.js-decr.html';
-import traceText from './Memory.js-trace.txt';
+import codeText from './Memory-code.js';
+import highlightText from './Memory-highlight.txt';
+import descriptionText from './Memory-desc.html';
+import traceText from './Memory-trace.txt';
 
 /**
  * The compiled `content-memory` content: a direct-access memory visualization

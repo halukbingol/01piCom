@@ -1,0 +1,9 @@
+# Arrays-trace.txt : state@|@text
+0@|@op                            nums[0] nums[1] nums[2] nums[3] nums[4]  sum
+0@|@                              u       u       u       u       u       u
+1@|@int[] nums = new int[5];      0       0       0       0       0       u
+2@|@nums[0] = 10;                 10      0       0       0       0       u
+3@|@nums[1] = 20;                 10      20      0       0       0       u
+4@|@nums[2] = 30;                 10      20      30      0       0       u
+5@|@nums[3] = 40;                 10      20      30      40      0       u
+6@|@int sum = nums[0]+nums[1];    10      20      30      40      0       30

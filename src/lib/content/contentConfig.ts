@@ -20,6 +20,9 @@ function stripComment(line: string): string {
  * starting with `#` is a full comment, and a trailing `# ...` after a value is
  * stripped.
  *
+ * Page title: the `title` line (`title,<text>`) supplies the HTML page title.
+ * It is optional; when absent the build-time default title is kept.
+ *
  * Pane visibility: `<pane>,invisible` hides that pane. For each of `code`,
  * `description`, and `board`, the config must EITHER define the pane's file(s)
  * OR mark the pane invisible; otherwise a `console.error` is emitted. `stepsNO`
@@ -51,6 +54,8 @@ export function parseConfig(text: string): ContentConfig {
     throw new Error('config.txt is missing required key: stepsNO.');
   }
 
+  const title = map.get('title');
+
   const fileCode = map.get('fileCode');
   const fileCodeHighlight = map.get('fileCodeHighlight');
   const fileDescription = map.get('fileDescription');
@@ -79,6 +84,7 @@ export function parseConfig(text: string): ContentConfig {
   }
 
   return {
+    title,
     stepsNO: Number(stepsNORaw),
     fileCode,
     fileCodeHighlight,

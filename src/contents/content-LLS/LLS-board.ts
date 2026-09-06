@@ -19,6 +19,9 @@ import { ZhbNodeLLS } from '../../lib/board/ZhbNodeLLS';
 
 // ---------------------------------------------------------------- geometry ---
 
+/** This content's board coordinate space (min-x min-y width height). */
+const VIEW_BOX = '-150 -150 300 300';
+
 /** Slot x for the head pointer and the two nodes. */
 const HEAD_X = -120;
 const N1_X = 10;
@@ -56,6 +59,7 @@ export function resetBoard(): void {
 export const steps: StepFn[] = [
   // step-0: create head; head -> null.
   (board): void => {
+    board.getSvg().setAttribute('viewBox', VIEW_BOX);
     reg.head.setLink(null);
     board.add(reg.head);
   },

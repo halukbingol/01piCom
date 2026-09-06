@@ -62,6 +62,13 @@ export const PANE_NAMES: readonly PaneName[] = [
  * Parsed contents of a content's `config.txt` (a CSV of key,value lines).
  */
 export interface ContentConfig {
+  /**
+   * Title text read from the `title` line of `config.txt`, used for both the
+   * HTML page title (`document.title`) and the `#div-title` header. Omitted when
+   * the config has no `title` line, in which case the build-time defaults are
+   * kept.
+   */
+  readonly title?: string;
   /** Number of steps, including step 0. */
   readonly stepsNO: number;
   /** Filename of the source code shown in the `code` pane (omitted if hidden). */

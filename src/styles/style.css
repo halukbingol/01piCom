@@ -222,6 +222,7 @@ body {
 
 /* Variable-name label to the left of a memory cell. */
 .zhb__label--name {
+  font-size: 8px;
   fill: var(--text-dim);
 }
 

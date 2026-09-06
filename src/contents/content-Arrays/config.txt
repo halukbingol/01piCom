@@ -1,0 +1,22 @@
+# config.txt for 
+
+title,content-Arrays
+
+# required
+stepsNO,7
+
+# download pane
+download,invisible
+
+# code pane
+fileCode,Arrays-code.java
+fileCodeHighlight,Arrays-highlight.txt
+
+# description pane
+fileDescription,Arrays-desc.html
+
+# board pane
+fileBoard,board.ts
+
+# trace pane
+fileTrace,Arrays-trace.txt

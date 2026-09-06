@@ -7,4 +7,17 @@ export class ZhbConstant {
    * on the trace pane for that state.
    */
   public static readonly TRACE_SEPARATOR = '@|@';
+
+
+  /**
+   * Append to the title of the html page.
+   */
+  public static readonly SITE = '  |  01pi.com';
+
+
+  /**
+   * Default content appears at `http://localhost:8080/`
+   */
+  public static readonly DEFAULT_CONTENT = 'cont-Primitive';
+
 }
