@@ -11,6 +11,7 @@ export {
 export { ZhbCircle } from './ZhbCircle';
 export { ZhbBox } from './ZhbBox';
 export { ZhbText } from './ZhbText';
+export { ZhbPoint } from './ZhbPoint';
 export { ZhbLink } from './ZhbLink';
 export { ZhbLine } from './ZhbLine';
 export { ZhbNode } from './ZhbNode';

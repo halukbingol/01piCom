@@ -1,0 +1,11 @@
+.a01pi-title-running{
+    margin-left: 20px;
+    margin-right: 20px;
+    /*margin-top: 20px;*/
+    text-decoration: none;
+
+    /* from logo-pi10 */
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    color: #feb24c;
+    /*text-shadow: 2px 2px 4px #000000;*/
+}

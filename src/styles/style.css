@@ -16,6 +16,8 @@
   --text-dim: #8ba0b0;
   --accent: #35e0d8;
   --accent-strong: #17b8b0;
+  --draw: #dfeef2; /* default stroke/label color for SVG board figures */
+  --highlight: #ff9f0a; /* highlighted-state color for SVG board figures */
   --prev: #e5484d;
   --next: #3fb950;
   --radius: 12px;
@@ -185,7 +187,7 @@ body {
 }
 
 .pane--board {
-  color: var(--accent);
+  color: var(--draw);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -253,20 +255,21 @@ body {
 
 /* Highlight: bright color + thicker strokes. */
 .zhb.zhb--highlighted {
-  color: var(--next);
+  color: var(--highlight);
 }
 
 .zhb.zhb--highlighted .zhb__shape {
-  stroke: var(--next);
+  stroke: var(--highlight);
   stroke-width: 3;
 }
 
 .zhb.zhb--highlighted rect.zhb__shape {
-  fill: rgba(63, 185, 80, 0.15);
+  /* fill: rgba(92, 255, 122, 0.18); */
+ fill: rgba(255, 159, 10, 0.18); 
 }
 
 .zhb.zhb--highlighted .zhb__label {
-  fill: var(--next);
+  fill: var(--highlight);
   font-weight: 700;
 }
 

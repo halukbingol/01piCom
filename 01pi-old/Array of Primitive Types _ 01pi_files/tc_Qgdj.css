@@ -1,0 +1,210 @@
+/* v20180508 */
+html,
+body {
+    padding: 0;
+    font-size: x-large;
+    /* HB/20180101/non-presentation usage
+    font-size: xx-large;
+    */
+}
+
+.softdev4u-footer {
+    width: 100%;
+    position: fixed;
+    /* Nuri/20180508/navigation at the bottom
+    position: absolute;
+    */
+    bottom: 0px;
+    background-color: #e2e2e2;
+    font-size: small;
+}
+
+.softdev4u-copyright {
+    float: right;
+}
+
+.softdev4u-pageNumber {
+    width: 100px;
+}
+
+.softdev4u-page {
+    background-color: #FFFCED;
+    height: 100vh;
+    position: relative;
+    width: auto;
+    z-index: 1;
+}
+
+.softdev4u-toc-package {
+    margin-left: 20px;
+    margin-bottom: 4px;
+    padding-top: 2px;
+}
+
+.softdev4u-pageContent {
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 0 5%;
+}
+
+.softdev4u-title {
+    font-family: verdana;
+    font-size: 32px;
+    color: #428bca;
+    text-align: center;
+    padding-top: 20px;
+    display: block;
+}
+
+.softdev4u-toc-div {
+    position: absolute;
+    max-height: 70vh;
+    width: 50vw;
+    z-index: 11;
+    background-color: #e2e2e2;
+    padding: 20px;
+    padding-left: 0px;
+    overflow-y: auto;
+    overflow-x: auto;
+    font-size: medium;
+}
+
+.softdev4u-goto-div {
+    font-size: medium;
+}
+
+.softdev4u-mainTitle {
+    font-family: verdana;
+    font-size: 40px;
+    color: #428bca;
+    text-align: center;
+    display: table-cell;
+    height: 90vh;
+    vertical-align: middle;
+    width: 100vw;
+}
+
+.softdev4u-toc-link {
+    float: right;
+    text-align: center;
+    position: relative;
+}
+
+.softdev4u-explanation {
+    font-family: verdana;
+    font-size: x-large;
+    color: black;
+    margin-left: 20px;
+}
+
+.softdev4u-codeDiv {
+    background-color: lightgrey;
+    -moz-tab-size: 2;
+    -o-tab-size: 2;
+    tab-size: 2;
+    font-size: large;
+}
+
+.softdev4u-preDiv {
+    font-family: monospace;
+    white-space: pre;
+    border: 1px solid #a1a1a1;
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: 80vh;
+}
+
+pre {
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: 80vh;
+}
+
+.softdev4u-innerCode {
+    background-color: inherit;
+    font-size: xx-large;
+    white-space: pre;
+    font-family: monospace;
+}
+
+.softdev4u-innerCodeBlue {
+    color: blue;
+    background-color: inherit;
+    font-size: xx-large;
+    white-space: pre;
+    font-family: monospace;
+}
+
+.softdev4u-codeBoxMargin {
+    margin-right: 5%;
+}
+
+.softdev4u-pageContent li {
+    font-family: arial;
+}
+
+.softdev4u-withPicture {
+    width: 45%;
+}
+
+.softdev4u-imgWithFullWidth {
+    height: auto;
+    width: 100%;
+}
+
+.softdev4u-imgWithSmallWidth {
+    height: 200px;
+    width: 200px;
+}
+
+.softdev4u-divOnRight {
+    float: right;
+    height: auto;
+    width: 45%;
+}
+
+.softdev4u-imgSizeOne {
+    height: 250px;
+    width: 250px;
+}
+
+.softdev4u-crossText {
+    text-decoration: line-through;
+}
+
+.softdev4u-boldUnderline {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.softdev4u-black {
+    color: Black;
+}
+
+.softdev4u-blue {
+    color: Blue;
+}
+
+.softdev4u-green {
+    color: #408906;
+}
+
+.softdev4u-red {
+    color: red;
+}
+
+.softdev4u-purple {
+    color: #7D26CD;
+}
+
+.softdev4u-back-blue {
+    background-color: blue;
+}
+
+.softdev4u-back-green {
+    background-color: SpringGreen;
+}
+
+.softdev4u-back-red {
+    background-color: red;
+}

@@ -1,0 +1,22 @@
+
+:root {
+  --ink: #0b1015;
+  --ink-raised: #121a22;
+  --ink-sunken: #0d141b;
+  --line: #23303b;
+  --text: #e6eef4;
+  --text-dim: #8ba0b0;
+  --accent: #35e0d8;
+  --accent-strong: #17b8b0;
+  --draw: #dfeef2; /* default stroke/label color for SVG board figures */
+  --highlight: #5cff7a; /* highlighted-state color for SVG board figures */
+  --prev: #e5484d;
+  --next: #3fb950;
+  --radius: 12px;
+
+
+  /*  */
+
+  --a:#ff7a18
+  --b:#ff9f0a
+}

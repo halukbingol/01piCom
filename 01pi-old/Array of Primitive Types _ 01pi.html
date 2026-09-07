@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html><head style="color: blue;">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Array of Primitive Types | 01pi</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Tag Manager -->
+    <script async="" src="Array%20of%20Primitive%20Types%20_%2001pi_files/google-analytics_analytics_Qgdj.js"></script><script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MZ5V8VX');</script>
+    <!-- End Google Tag Manager -->
+
+    <!--  01pi  -->
+    <link rel="shortcut icon" href="Array%20of%20Primitive%20Types%20_%2001pi_files/01pi_Qgdj.svg">
+    <link rel="stylesheet" href="Array%20of%20Primitive%20Types%20_%2001pi_files/01pi_Qgdj.css">
+    <link rel="stylesheet" href="Array%20of%20Primitive%20Types%20_%2001pi_files/CS4All_Qgdj.css">
+    <!--  01pi  -->
+
+    <link type="text/css" rel="stylesheet" href="Array%20of%20Primitive%20Types%20_%2001pi_files/prettify_Qgdj.css">
+    <link type="text/css" rel="stylesheet" href="Array%20of%20Primitive%20Types%20_%2001pi_files/bootstrap.min_Qgdj.css">
+    <link type="text/css" rel="stylesheet" href="Array%20of%20Primitive%20Types%20_%2001pi_files/bootstrap-theme.min_Qgdj.css">
+    <link type="text/css" rel="stylesheet" href="Array%20of%20Primitive%20Types%20_%2001pi_files/markdown_Qgdj.css">
+    <link type="text/css" rel="stylesheet" href="Array%20of%20Primitive%20Types%20_%2001pi_files/tc_Qgdj.css">
+    <link type="text/css" rel="stylesheet" href="Array%20of%20Primitive%20Types%20_%2001pi_files/tcContent_Qgdj.css">
+    <!-- <script type="text/javascript" src="../../tcBundle/js/jquery-2.1.1.min.js"></script> -->
+    <script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/jquery-2.1.1.min_Qgdj.js"></script>
+    <script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/prettify_Qgdj.js"></script>
+    <script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/bootstrap.min_Qgdj.js"></script>
+    <script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/MathJax_Qgdj.js"></script>
+    <script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/markdown_Qgdj.js"></script>
+    <script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/tc_Qgdj.js"></script>
+    <script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/tcContent_Qgdj.js"></script>
+    <script>
+        //    $(function() {
+        //        prettyPrint();
+        //        softdev4uContent_init();
+        //        softdev4u_init();
+        //    });
+    </script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body onresize="softdev4u_resize()"><div id="MathJax_Message" style="display: none;"></div>
+<!-- F-head-body-V.html -->
+<!-- + F-dcb-lib-common.html -->
+<script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/snap.svg_Qgdj.js"></script>
+<link rel="stylesheet" href="Array%20of%20Primitive%20Types%20_%2001pi_files/prism_Qgdj.css">
+<script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/prism_Qgdj.js"></script>
+<!-- + F-dcb-lib-objects-development.html -->
+<script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/HBUtilities_Qgdj.js"></script>
+<script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/HBNavigationStepByStep_Qgdj.js"></script>
+<script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/HBPlusMinus_Qgdj.js"></script>
+<!--  -->
+<script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/HBGPoint_Qgdj.js"></script>
+<script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/HBObjectDrawable_Qgdj.js"></script>
+<script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/HBObjectDrawableArray_Qgdj.js"></script>
+<script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/HBBox_Qgdj.js"></script>
+<script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/HBBoxObject_Qgdj.js"></script>
+
+<script type="text/javascript" src="Array%20of%20Primitive%20Types%20_%2001pi_files/HBObjTree_Qgdj.js"></script>
+<!-- + F-dcb-script-windowOnload.html -->
+<script type="text/javascript">
+    'use strict';
+
+    // global
+
+    // config
+    let isDescrBlock = false;
+    let isDescrStep = false;
+    let isCode = false;
+    let isTrace = false;
+    let isEclipse = false;
+    let isBoard = false;
+    let traceHeaderLinesNO = 2;
+
+
+    let s;
+    let hbPlusMinus;
+    let arrDrawable = new Array();
+    let arrSteps = new Array();
+    //
+    window.onload = function () {
+        'use strict';
+
+        s = Snap("#idViewBoard");
+        //
+        stepByStepInit();
+        //
+        hbPlusMinus = new HBPlusMinus(
+            arrDrawable,
+            arrSteps,
+            isDescrBlock,
+            isDescrStep,
+            isCode,
+            isTrace,
+            isEclipse,
+            isBoard,
+            traceHeaderLinesNO
+        );
+        // hbPlusMinus.setArrDrawable(arrDrawable);
+        // hbPlusMinus.setSteps(arrSteps);
+        hbPlusMinus.stateCurr = -1;
+        hbPlusMinus.stepByStep(0);
+        //
+        HBObjectDrawable.drawArrDrawable(s, arrDrawable);
+        // navigation
+        let paperNavigation = Snap("#idViewNavigation")
+            .attr({
+                viewBox: "0 0 1000 60"
+            });
+        // let stateNOF = arrSteps.length;
+        this.repaintNextStep = hbPlusMinus.stepByStep;
+        new HBNavigationStepByStep(
+            paperNavigation,
+            hbPlusMinus.getNumberOfSteps(),
+            // arrSteps.length,
+            hbPlusMinus.stepByStep,
+            this,
+            hbPlusMinus
+        );
+
+    }; // window.onload
+
+    // $(function() {
+    //     prettyPrint();
+    //     softdev4uContent_init();
+    //     softdev4u_init();
+    // });
+
+    //    function hideById(id) {
+    //        let elem = document.getElementById(id);
+    //        elem.setArrtibute("class", "hbHide");
+    //    }
+</script>    <!-- + F-script-common.html -->
+<script type="text/javascript">
+    'use strict';
+
+    // nop 
+    // @HB
+</script>
+
+
+<!-- + F-sd4fPage-V.html -->
+<!-- softdev4u-page V -->
+<div class="softdev4u-page">
+    <!-- F-sd4fTitle-VA.html -->
+    <!-- SOFTDEV4U PRETITLE -->
+    <div class="tcDivTitle">
+        <p id="idTitleRunning" class="tcTitleRunning">Visualization- Arrays<a href="https://www.01pi.com/" target="_blank">
+<span class="a01pi-title-running">   <img src="Array%20of%20Primitive%20Types%20_%2001pi_files/01pi_Qgdj.svg" height="40" width="40" alt="01pi.com logo">
+   01pi.com</span></a>
+</p>
+        <p id="idTitleSlide" class="tcTitleSlide">Array of Primitive Types: Declaration, initialization and assignment</p>
+    </div>
+    <!-- F-sd4fTitle-VA.html -->
+    <!-- + F-bcd-visible.html -->
+    <!-- class="softdev4u-oneColumn V" -->
+    <div class="softdev4u-oneColumn">
+        <!-- view part V -->
+        <div id="idVisible" class="hbColumn1o1">
+            <svg id="idViewNavigation" width="100%" height="100%" viewBox="0 0 1000 60"><desc>Created with Snap</desc><defs></defs><path d="M0,0L21.65,12.5L21.65,-12.5z" transform="matrix(1,0,0,1,25,25)" style="" fill="#0000ff"></path><circle cx="40" cy="25" r="20" id="prev" style="fill-opacity: 0; stroke-width: 2px;" stroke="#333333"></circle><text x="80" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">0</text><circle cx="80" cy="25" r="20" id="0" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="pink" class="state"></circle><text x="120" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">1</text><circle cx="120" cy="25" r="20" id="1" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="160" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">2</text><circle cx="160" cy="25" r="20" id="2" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="200" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">3</text><circle cx="200" cy="25" r="20" id="3" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="240" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">4</text><circle cx="240" cy="25" r="20" id="4" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="280" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">5</text><circle cx="280" cy="25" r="20" id="5" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="320" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">6</text><circle cx="320" cy="25" r="20" id="6" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="360" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">7</text><circle cx="360" cy="25" r="20" id="7" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="400" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">8</text><circle cx="400" cy="25" r="20" id="8" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="440" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">9</text><circle cx="440" cy="25" r="20" id="9" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="480" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">10</text><circle cx="480" cy="25" r="20" id="10" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="520" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">11</text><circle cx="520" cy="25" r="20" id="11" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="560" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">12</text><circle cx="560" cy="25" r="20" id="12" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="600" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">13</text><circle cx="600" cy="25" r="20" id="13" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="640" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">14</text><circle cx="640" cy="25" r="20" id="14" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><text x="680" y="35" style="font: 30px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: middle;">15</text><circle cx="680" cy="25" r="20" id="15" style="opacity: 0.2; stroke-width: 2px;" stroke="#333333" fill="blue" class="state"></circle><path d="M0,0L21.65,12.5L21.65,-12.5z" transform="matrix(-1,0,0,-1,731.65,25)" style="" fill="#ff0000"></path><circle cx="720" cy="25" r="20" id="next" style="fill-opacity: 0.2; stroke-width: 2px;" stroke="#333333"></circle></svg>
+            <div>
+                <div class="hbColumn2o3">
+                    <div id="idViewCodeDiv" class="hbColumn1o2l">
+                        <p class="hbDivTitle">Code</p>
+                        <pre id="idViewCodePre" class="hbShadow  language-java" data-start="1" width="100%" height="100%" data-line="1">                        <code id="idViewCode" class="  language-java"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">int</span> a<span class="token punctuation">;</span>
+a <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token comment">//</span>
+<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrInt<span class="token punctuation">;</span>
+<span class="token comment">//</span>
+arrInt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+arrInt<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+arrInt<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+arrInt<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
+<span class="token comment">//</span>
+arrInt<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">;</span>
+a <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+<span class="token comment">//</span>
+arrInt<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> arrInt<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">//</span>
+arrInt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// pause</span>
+arrInt<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+arrInt<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        
+	<div aria-hidden="true" data-range="1" class=" line-highlight" data-start="1" style="top: 0px;"> 
+</div></code>
+                    </pre>
+                        <div id="idViewSwitchToCode" class="softdev4u-openExampleDiv" data-softdev4u-language="java" data-softdev4u-examplename="JavaVisualization" data-softdev4u-filepath="src/codes/teaching/java/visualization/VisualArrayPrimitive.java" data-softdev4u-linenumber="6" data-softdev4u-linktitle="Switch to code">
+                        <button onclick="openExample('JavaVisualization', 'src/codes/teaching/java/visualization/VisualArrayPrimitive.java', 6, 'java');">Switch to code</button></div>
+                    </div>
+                    <div id="idViewColumnBoard" class="hbColumn1o2r">
+                        <p class="hbDivTitle">Board</p>
+                        <svg id="idViewBoard" class="viewBoard" width="100%" height="100%" viewBox="0 0 300 350">
+                        <desc>Created with Snap</desc><defs></defs><rect x="200" y="10" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="23" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="200" y="30" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="43" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="200" y="50" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="63" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="200" y="70" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="83" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="200" y="90" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="103" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="200" y="110" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="123" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="200" y="130" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="143" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="200" y="150" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="163" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="200" y="170" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="183" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="200" y="190" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="203" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="200" y="210" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="223" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="200" y="230" width="40" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="205" y="243" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><text x="195" y="23" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: end; opacity: 1;">0</text><text x="195" y="63" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: end; opacity: 1;">2</text><text x="195" y="103" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: end; opacity: 1;">4</text><text x="195" y="143" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: end; opacity: 1;">6</text><text x="195" y="183" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: end; opacity: 1;">8</text><text x="195" y="223" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: end; opacity: 1;">10</text><text x="200" y="6" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;">memory</text><rect x="10" y="10" width="120" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="15" y="23" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="10" y="30" width="120" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="15" y="43" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="10" y="50" width="120" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="15" y="63" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><rect x="10" y="70" width="120" height="16" style="stroke-width: 2px; opacity: 1;" stroke="#a9a9a9" fill="none"></rect><text x="15" y="83" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;" stroke="#a9a9a9"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 1;" fill="none" stroke="#a9a9a9"></path><text x="5" y="23" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: end; opacity: 1;">0</text><text x="5" y="63" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: end; opacity: 1;">2</text><text x="10" y="6" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 1;">symbol table</text><text x="10" y="100" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start;">color coding table</text><rect x="10" y="103" width="10" height="10" style="stroke-width: 1px; opacity: 1;" stroke="#a9a9a9" fill="#003300"></rect><text x="24" y="113" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start;">int</text><rect x="10" y="116" width="10" height="10" style="stroke-width: 1px; opacity: 1;" stroke="#a9a9a9" fill="#d9d9d9"></rect><text x="24" y="126" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start;">Garbage</text><rect x="186" y="190" width="68" height="56" style="stroke-width: 2px; opacity: 0;" stroke="#003300" fill="none"></rect><text x="191" y="203" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 0;"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 0;" fill="none" stroke="#003300"></path><text x="245" y="203" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 0;" stroke="#003300">0</text><text x="245" y="223" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 0;" stroke="#003300">1</text><text x="245" y="243" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 0;" stroke="#003300">2</text><rect x="186" y="150" width="68" height="36" style="stroke-width: 2px; opacity: 0;" stroke="#003300" fill="none"></rect><text x="191" y="163" style="font: 14px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 0;"></text><path d="M 0 0 L 0 0" style="stroke-width: 3px; stroke-linecap: round; opacity: 0;" fill="none" stroke="#003300"></path><text x="245" y="163" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 0;" stroke="#003300">0</text><text x="245" y="183" style="font: 8px source-sans-pro, Source Sans Pro, Helvetica, sans-serif; text-anchor: start; opacity: 0;" stroke="#003300">1</text></svg>
+                    </div>
+                    <!--  -->
+                    <div id="idViewTraceDiv" class="hbColumn1o1">
+                        <p class="hbDivTitle">Trace</p>
+                        <pre id="idViewTracePre" class="hbShadow  language-java" width="100%" height="100%">                        <code id="idViewTrace" class="  language-java">
+statement           	<span class="token operator">|</span>  a  arrInt 
+             \index 	<span class="token operator">|</span>     <span class="token number">0</span> <span class="token number">1</span> <span class="token number">2</span>   
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>	<span class="token operator">+</span>  <span class="token operator">-</span>  <span class="token operator">-</span> <span class="token operator">-</span> <span class="token operator">-</span>  <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
+                      	<span class="token operator">|</span>  u  u u u  u
+</code>
+                    </pre>
+                    </div>
+                </div>
+                <div id="idViewColumnDescr" class="hbColumn1o3">
+                    <p class="hbDivTitle">Description</p>
+                    <div id="idViewDescr" class="viewDescr" width="100%" height="100%">
+        <p>We start with empty</p>
+        <ul>
+            <li><span class="tcEmp">symbol table</span> and</li>
+            <li><span class="tcEmp">memory</span>.</li>
+        </ul>
+        <div class="tcDivRemark">
+            <ul>
+                <li><p>Note that in trace</p>
+                    <ul>
+                        <li><code>u</code> means <span class="tcEmp">undefined</span> variable</li>
+                        <li><code>-</code> means defined but <span class="tcEmp">uninitialized</span> variable</li>
+                        <li><code>?</code> means <span class="tcEmp">your turn</span> to answer</li>
+                    </ul>
+                </li>
+                <li><p>At this point all variables are undefined.</p></li>
+            </ul>
+        </div>
+        <div class="tcDivRemark">
+            <ul>
+                <li>You can run the code at any time by clicking "Switch to code" button.</li>
+            </ul>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <!-- view part A -->
+    </div>
+    <!-- class="softdev4u-oneColumn A" -->
+    <!-- + F-sd4fPage-A.html -->
+<div class="softdev4u-footer"><small class="softdev4u-copyright">in-memory-primitive-types-array.html</small><div class="softdev4u-navigation" style="width: 300px;"><div style="float:left; width: 150px; text-align: center;"><div style="float: left;"><a href="#" onclick="previousPage();"><span class="glyphicon glyphicon-chevron-left">&nbsp;&nbsp;</span></a></div><div style="float: right;"><a href="#" onclick="nextPage();">&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div><a href="#" onclick="softdev4u_openGoTo();" class="softdev4u-pageNumber"></a></div><div style="float:right; width: 100px;"><div style="float: left;" class="softdev4u-navigation-up" onmouseover="softdev4u_historyTimerStart();" onmouseout="softdev4u_historyTimerStop();"><a href="#" onclick="getOut();"><span class="glyphicon glyphicon-chevron-up"></span></a></div><div class="softdev4u-toc-link"><a href="#" onclick="softdev4u_openTOC();">TOC</a></div><div>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="resetMeta();">R</a></div></div></div></div></div>
+<!-- softdev4u-page A -->
+<!-- + F-generalPurpose.html -->
+<script type="text/javascript">
+    'use strict';
+
+    // // configuration setting
+    // isDescrBlock = false;
+    // isDescrStep = false;
+    // isCode = false;
+    // isTrace = false;
+    // isEclipse = false;
+    // isBoard = false;
+    traceHeaderLinesNO = 3; // number of lines in the header above ---+----
+
+    // 01pi
+    setTitle(
+        'Visualization- Arrays',
+        'Array of Primitive Types: Declaration, initialization and assignment'
+    );
+
+    setSwitchCode(
+        "java", // language
+        'JavaVisualization', // ProjectName
+        'src/codes/teaching/java/visualization/VisualArrayPrimitive.java', // filePath src/codes/teaching/java/operators/WholeNumbers.java
+        '6' // lineNumber
+    );
+
+</script><!-- + F-description-script-enable-block.html -->
+<script type="text/javascript">
+    'use strict';
+    isDescrBlock = true;
+    isDescrStep = false;
+</script><!-- + F-description-invisible-V.html -->
+<!-- in decription V -->
+<div id="idInDescr" hidden="">
+    <div class="hbDescriptionStep">
+        <p>We start with empty</p>
+        <ul>
+            <li><span class="tcEmp">symbol table</span> and</li>
+            <li><span class="tcEmp">memory</span>.</li>
+        </ul>
+        <div class="tcDivRemark">
+            <ul>
+                <li><p>Note that in trace</p>
+                    <ul>
+                        <li><code>u</code> means <span class="tcEmp">undefined</span> variable</li>
+                        <li><code>-</code> means defined but <span class="tcEmp">uninitialized</span> variable</li>
+                        <li><code>?</code> means <span class="tcEmp">your turn</span> to answer</li>
+                    </ul>
+                </li>
+                <li><p>At this point all variables are undefined.</p></li>
+            </ul>
+        </div>
+        <div class="tcDivRemark">
+            <ul>
+                <li>You can run the code at any time by clicking "Switch to code" button.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="hbDescriptionStep">
+        <div class="highlight highlight-source-java">
+            <pre><span class="pl-k">int</span> a;</pre>
+        </div>
+        <p>is a <span class="tcEmp">declaration</span> statement. It causes a number of actions:</p>
+        <ul>
+            <li>a new entry in symbol table for variable <code>a</code>
+                <ul>
+                    <li>note that the type is <code>int</code></li>
+                </ul>
+            </li>
+            <li>a new entry in memory for variable <code>a</code>
+                <ul>
+                    <li>note that <code>a</code> is defined but its content is uninitialized at this point. It is
+                        indicated by <code>u</code>.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <button type="button" onclick="softdev4u_showHideAnswerButtonClicked(this);" data-softdev4u-status="show">Show Answer</button><div class="softdev4u-answer tcDoYouKnow" style="display: none;">
+            <ul>
+                <li><p>In order to simplify the picture, we use</p>
+                    <ul>
+                        <li>location <span class="tcLocation">0</span> of the symbol table for declaration of variable
+                            <code>a</code></li>
+                        <li>location <span class="tcLocation">0</span> of the memory for the value of variable
+                            <code>a</code></li>
+                    </ul>
+                </li>
+                <li><p>In reality, run time system assigns</p>
+                    <ul>
+                        <li>the first available location in the system table for the declaration</li>
+                        <li>the first available location in the memory for the value</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="hbDescriptionStep">
+        <div class="highlight highlight-source-java">
+            <pre>a <span class="pl-k">=</span> <span class="pl-c1">4</span>;</pre>
+        </div>
+        <p>is an <span class="tcEmp">assignment</span> statement.</p>
+        <ul>
+            <li>sets the content of memory location of <code>a</code> to <code>4</code>.</li>
+        </ul>
+    </div>
+    <div class="hbDescriptionStep">
+        <div class="highlight highlight-source-java">
+            <pre><span class="pl-k">int</span>[] arrInt;</pre>
+        </div>
+        <p>is similar to <code>int a;</code>.</p>
+        <ul>
+            <li>defines variable <code>arrInt</code> of type <code>int[]</code>,
+                <ul>
+                    <li>that is, array of <code>int</code></li>
+                </ul>
+            </li>
+        </ul>
+        <p>It causes:</p>
+        <ol>
+            <li> a new entry in symbol table for variable `arrInt`
+                <ul>
+                    <li> note that the type is <span class="tcEmp">`int` array</span>, <br>that is, `int[]`</li>
+                </ul>
+            </li>
+            <li> a new entry in memory for variable `arrInt`
+                <ul>
+                    <li> note that the content is uninitialized at this point. <br>It is indicated by `u`</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    <div class="hbDescriptionStep">
+        <div class="highlight highlight-source-java">
+            <pre>arrInt <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[<span class="pl-c1">3</span>];</pre>
+        </div>
+        <ul>
+            <li>reserves memory location for 3 integers.</li>
+            <li>the locations are initialized to <code>0</code>.
+                <ul>
+                    <li>That is, the contents are set to <code>0</code></li>
+                </ul>
+            </li>
+        </ul>
+        <p>Note that</p>
+        <ul>
+            <li><p><code>arrInt</code> refers to these 3 locations all together.</p>
+                <ul>
+                    <li>its content is set to the location of the first item
+                        <ul>
+                            <li>symbolically its value is set to <span class="tcContent">@5</span>, indicating that the
+                                array is actually starting at location <span class="tcLocation">5</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><p>individual locations are referred by</p>
+                <ul>
+                    <li><code>arrInt[0]</code> for location <span class="tcLocation">9</span>,</li>
+                    <li><code>arrInt[1]</code> for location <span class="tcLocation">10</span>,</li>
+                    <li><code>arrInt[2]</code> for location <span class="tcLocation">11</span></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="tcDivRemark">
+            <ul>
+                <li>Check the trace.</li>
+                <li>Now <code>arrInt</code> has a value. The value indicates the memory locations reserved for <code>arrInt</code>.
+                    <ul>
+                        <li>In trace, you would see something like <code>[I@33909752</code>, indicating that it is an
+                            array of integers (<code>[I</code>) and some number (<code>33909752</code>) for actual
+                            location after <code>@</code></li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Note that</p>
+            <ul>
+                <li>this value will change at <code>arrInt = new int[2];</code>
+                    <ul>
+                        <li>since a new object will be created.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <button type="button" onclick="softdev4u_showHideAnswerButtonClicked(this);" data-softdev4u-status="show">Show Answer</button><div class="softdev4u-answer tcDoYouKnow" style="display: none;">
+            <ul>
+                <li><p>For simplification, we used location <span class="tcLocation">9</span> for the new array</p></li>
+                <li><p>In reality, the runtime system would use the <span class="tcEmp">first available location</span>
+                    in the <span class="tcEmp">heap</span></p></li>
+                <li><p>see</p>
+                    <ul>
+                        <li><img src="Array%20of%20Primitive%20Types%20_%2001pi_files/Wikipedia's_W_Qgdj.svg" alt="Wikipedia link" class="tcLinkedIcon"><a href="https://en.wikipedia.org/wiki/Memory_management#HEAP" rel="nofollow">Heap</a></li>
+                        <li><a href="https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap" rel="nofollow">What and where are the stack and heap?</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="hbDescriptionStep">
+        <p>Now focus on <code>arrInt[0]</code>.</p>
+        <div class="highlight highlight-source-java">
+            <pre>arrInt[<span class="pl-c1">0</span>] <span class="pl-k">=</span> <span class="pl-c1">8</span>;</pre>
+        </div>
+        <p>sets its content to <code>8</code>.</p>
+        <ul>
+            <li>This is not any different than <code>a = 4;</code>
+                <ul>
+                    <li>setting the content of <code>a</code> to <code>4</code>.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="hbDescriptionStep">
+        <p>Similarly,</p>
+        <div class="highlight highlight-source-java">
+            <pre>arrInt[<span class="pl-c1">2</span>] <span class="pl-k">=</span> <span class="pl-c1">5</span>;</pre>
+        </div>
+        <p>sets the content of <code>arrInt[2]</code> to <code>5</code>.</p>
+        <p>Note that</p>
+        <ul>
+            <li>We do not need to go in order in index.
+                <ul>
+                    <li>We skip index <code>1</code>, that is <code>arrInt[1]</code></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="hbDescriptionStep">
+        <p>So does this:</p>
+        <div class="highlight highlight-source-java">
+            <pre>arrInt[<span class="pl-c1">1</span>] <span class="pl-k">=</span> <span class="pl-c1">7</span>;</pre>
+        </div>
+    </div>
+    <div class="hbDescriptionStep">
+        <p>So far we use numbers on the right hand side of assignments.</p>
+        <p>Let's try something new.</p>
+        <p>Focus to <code>arrInt[0]</code> again.</p>
+        <div class="highlight highlight-source-java">
+            <pre>arrInt[<span class="pl-c1">0</span>] <span class="pl-k">=</span> a;</pre>
+        </div>
+        <ul>
+            <li>take the content of <code>a</code>,
+                <ul>
+                    <li>assign to that of <code>arrInt[0]</code></li>
+                </ul>
+            </li>
+            <li>the content of <code>arrInt[0]</code> changes</li>
+        </ul>
+        <div class="tcDivQuestion">
+            <p>Do you thing value of <code>a</code> changes?</p>
+            <button type="button" onclick="softdev4u_showHideAnswerButtonClicked(this);" data-softdev4u-status="show">Show Answer</button><div class="softdev4u-answer tcShowAnswer" style="display: none;">
+                <p>No. The content of <code>a</code> does not change.</p>
+                <ul>
+                    <li>We are not <span class="tcEmp">moving</span> the content of <code>a</code> to
+                        <code>arrInt[0]</code></li>
+                    <li>We are <span class="tcEmp">copying</span> the content of <code>a</code> to
+                        <code>arrInt[0]</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="hbDescriptionStep">
+        <div class="highlight highlight-source-java">
+            <pre>a <span class="pl-k">=</span> <span class="pl-c1">9</span>;</pre>
+        </div>
+        <ul>
+            <li>When we change the content of <code>a</code>,
+                <ul>
+                    <li>the content of <code>arrInt[0]</code> stays unchanged.</li>
+                </ul>
+            </li>
+        </ul>
+        <button type="button" onclick="softdev4u_showHideAnswerButtonClicked(this);" data-softdev4u-status="show">Show Answer</button><div class="softdev4u-answer tcDoYouKnow" style="display: none;">
+            <ul>
+                <li>Later, we will see that changing one variable may change the value of another.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="hbDescriptionStep">
+        <p>It is possible to use two elements of array as any ordinary variables.</p>
+        <div class="highlight highlight-source-java">
+            <pre>arrInt[<span class="pl-c1">0</span>] <span class="pl-k">=</span> arrInt[<span class="pl-c1">2</span>];</pre>
+        </div>
+        <p>This is actually no different than</p>
+        <div class="highlight highlight-source-java">
+            <pre>b <span class="pl-k">=</span> a;</pre>
+        </div>
+    </div>
+    <div class="hbDescriptionStep">
+        <p>Now we are <span class="tcEmp">about to do something very new</span>.</p>
+        <ul>
+            <li>We will change the size of array to <code>2</code> by</li>
+        </ul>
+        <div class="highlight highlight-source-java">
+            <pre>arrInt <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[<span class="pl-c1">2</span>];</pre>
+        </div>
+        <p>As a result,</p>
+        <ul>
+            <li>The array will have only 2 items in it,
+                <ul>
+                    <li>That is, it is one shorter.</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="tcDivQuestion">
+            <ul>
+                <li>What would happen to the third item <code>arrInt[2]</code>?</li>
+                <li>The same question for <code>arrInt[0]</code> and <code>arrInt[1]</code>?
+                    <ul>
+                        <li>Do they stay as it is?</li>
+                        <li>Do they keep their content?</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="hbDescriptionStep">
+        <p>Let's run</p>
+        <div class="highlight highlight-source-java">
+            <pre>arrInt <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[<span class="pl-c1">2</span>];</pre>
+        </div>
+        <p>Did you expect this?</p>
+        <p>Java does an unexpected thing.</p>
+        <ul>
+            <li>Instead of trying to <span class="tcEmp">reorganize</span> the array of 3 into an array of 2
+                <ul>
+                    <li>It does it in a very different way.</li>
+                </ul>
+            </li>
+            <li><span class="tcEmp">Forgets</span> the array of 3 altogether
+                <ul>
+                    <li>Note that the array of 3 becomes <span class="tcEmp">grey</span></li>
+                </ul>
+            </li>
+            <li><span class="tcEmp">Creates</span> a brand new array with 2 items in a new location.</li>
+        </ul>
+        <div class="tcDivRemark">
+            <ul>
+                <li>Check the trace.</li>
+                <li>Note that <code>arrInt</code> has a new value.</li>
+                <li>This change indicates that <code>arrInt</code> has a new location in the memory.</li>
+            </ul>
+        </div>
+        <button type="button" onclick="softdev4u_showHideAnswerButtonClicked(this);" data-softdev4u-status="show">Show Answer</button><div class="softdev4u-answer tcDoYouKnow" style="display: none;">
+            <ul>
+                <li>The previous array is put into destruction list.</li>
+                <li>When time comes, <img src="Array%20of%20Primitive%20Types%20_%2001pi_files/Wikipedia's_W_Qgdj.svg" alt="Wikipedia link" class="tcLinkedIcon"><a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)" rel="nofollow">garbage
+                    collector</a>
+                    <ul>
+                        <li>destroys it</li>
+                        <li>recollects the locations for reuse.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="tcDivQuestion">
+            <p>How does the system decide on location <span class="tcLocation">7</span>?</p>
+            <button type="button" onclick="softdev4u_showHideAnswerButtonClicked(this);" data-softdev4u-status="show">Show Answer</button><div class="softdev4u-answer tcShowAnswer" style="display: none;">
+                <ul>
+                    <li>In reality, the <code>new</code> operator constructs the new array starting not at location
+                        <span class="tcLocation">7</span>.
+                    </li>
+                    <li>It uses the <span class="tcEmp">first available location</span> in the <span class="tcEmp">heap</span></li>
+                    <li>For simplification we use location <span class="tcLocation">7</span>.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="hbDescriptionStep">
+        <div class="highlight highlight-source-java">
+            <pre>arrInt[<span class="pl-c1">0</span>] <span class="pl-k">=</span> <span class="pl-c1">1</span>;</pre>
+        </div>
+        <p>As we previously did, we can assign new values to the items.</p>
+        <p>Note that <code>arrInt[0]</code> is in the new location of the array.</p>
+    </div>
+    <div class="hbDescriptionStep">
+        <p>So does</p>
+        <div class="highlight highlight-source-java">
+            <pre>arrInt[<span class="pl-c1">1</span>] <span class="pl-k">=</span> <span class="pl-c1">2</span>;</pre>
+        </div>
+        <div class="tcDivQuestion">
+            <p>Do you want to check the trace? Go to step 0 by clicking on 0 in navigation.</p>
+        </div>
+    </div>
+    <div class="hbDescriptionStep">
+        <p>That's all.</p>
+    </div>
+</div>
+
+<!-- + F-description-invisible-A.html -->
+<!-- in decription A -->
+<!-- + F-code-script-enable.html -->
+<script type="text/javascript">
+    'use strict';
+    isCode = true;
+</script><!-- + F-code-invisible-V.html -->
+<!-- in code V -->
+<pre>    <code id="idInCode" hidden="">...
+int a;
+a = 4;
+//
+int[] arrInt;
+//
+arrInt = new int[3];
+arrInt[0] = 8;
+arrInt[2] = 5;
+arrInt[1] = 7;
+//
+arrInt[0] = a;
+a = 9;
+//
+arrInt[0] = arrInt[2];
+//
+arrInt = new int[2];
+// pause
+arrInt[0] = 1;
+arrInt[1] = 2;
+...
+        <!-- + F-code-invisible-A.html -->
+	</code>
+</pre>
+<!-- in code A -->
+<!-- + F-highlight-invisible-V.html -->
+<!-- in higlight V -->
+<pre id="idInHighlight" hidden="">1
+2
+3
+5
+7
+8
+9
+10
+12
+13
+15
+17
+17
+19
+20
+.
+    <!-- + F-highlight-invisible-A.html -->
+</pre>
+<!-- in highlight A -->
+<!-- + F-trace-script-enable.html -->
+<script type="text/javascript">
+    'use strict';
+    isTrace = true;
+</script><!-- + F-trace-invisible-V.html -->
+<!-- in trace V -->
+<pre id="idInTrace" hidden="">statement           	|  a  arrInt 
+             \index 	|     0 1 2   
+----------------------	+  -  - - -  ------
+                      	|  u  u u u  u
+int a;                	|  -  u u u  u
+a = 4;                	|  4  u u u  u
+int[] arrInt;         	|  4  u u u  -
+arrInt = new int[3];  	|  4  0 0 0  [I@33909752
+arrInt[0] = 8;        	|  4  8 0 0  [I@33909752
+arrInt[2] = 5;        	|  4  8 0 5  [I@33909752
+arrInt[1] = 7;        	|  4  8 7 5  [I@33909752
+arrInt[0] = a;        	|  4  4 7 5  [I@33909752
+a = 9;                	|  9  4 7 5  [I@33909752
+arrInt[0] = arrInt[2];	|  9  5 7 5  [I@33909752
+arrInt = new int[2];  	|  9  0 0 u  [I@55f96302
+arrInt[0] = 1;        	|  9  1 0 u  [I@55f96302
+arrInt[1] = 2;        	|  9  1 2 u  [I@55f96302
+    <!-- + F-trace-invisible-A.html -->
+</pre>
+<!-- in trace A -->
+<!-- F-bcd-invisible-inBoard-V.html -->
+<!-- board V -->
+<script type="text/javascript">
+    'use strict';
+
+    // steps ==== V
+    let c_ind = 0;
+    let c_start = c_ind++;
+    let c_int_a = c_ind++; // int a = 4;
+    let c_a__4 = c_ind++; // int a = 4;
+    let c_dec_arrInt = c_ind++; // int[] arrInt;
+    let c_arrInt_new_3 = c_ind++; // arrInt = new int[3];
+    let c_arrInt_0__8 = c_ind++; // arrInt[0] = 8;
+    let c_arrInt_2__5 = c_ind++; // arrInt[2] = 5;
+    let c_arrInt_1__7 = c_ind++; // arrInt[1] = 7;
+    let c_arrInt_0__a = c_ind++; // arrInt[0] = a;
+    let c_a__9 = c_ind++; // a = 9;
+    let c_arrInt_0__arrInt_2 = c_ind++; // arrInt[0] = arrInt[2];
+    let c_arrInt_new_2_pre = c_ind++; // arrInt = new int[2];
+    let c_arrInt_new_2 = c_ind++; // arrInt = new int[2];
+    let c_arrInt_0__1 = c_ind++; // arrInt[0] = 1;
+    let c_arrInt_1__2 = c_ind++; // arrInt[1] = 2
+    //
+    let c_the_end = c_ind++;
+    // steps ==== A
+
+    // object color codes
+    let colorInt = HBObjectDrawableArray.DEFAULT_COLOR_TYPE_PRIMITIVE;
+
+    // memory
+    let sizeM = 12;
+    let arrM = [];
+    let baseM = 0;
+    let bottomM = sizeM - 1;
+    // symbol table
+    let sizeS = 4;
+    let arrS = [];
+    let baseS = 0;
+    let bottomS = sizeS - 1;
+    // symbol and variable
+    //
+    let s_a = baseS++;
+    let v_a = baseM++;
+    //
+    let s_arrInt = baseS++;
+    let v_arrInt = baseM++;
+
+
+    // arrInt = new int[3];
+    let o_o1;
+    let l_o1_2 = bottomM--;
+    let l_o1_1 = bottomM--;
+    let l_o1_0 = bottomM--;
+    let l_o1 = l_o1_0;
+    //
+    let o_o2;
+    let l_o2_1 = bottomM--;
+    let l_o2_0 = bottomM--;
+    let l_o2 = l_o2_0;
+
+    //
+
+    function stepByStepInit() {
+        'use strict';
+        s.attr({viewBox: "0 0 300 350"});
+        // ==== V
+        // memory
+        arrM = HBBox.setBoxTable(
+            "M",
+            sizeM, // sizeS,
+            200, // sULx,
+            10, // sULy,
+            HBObjectDrawableArray.DEFAULT_W_MEMORY,
+            HBObjectDrawableArray.DEFAULT_H,
+            HBObjectDrawableArray.DEFAULT_COLOR_MEMORY,
+            "memory"
+        );
+        // symbol table
+        let sULx = 10;
+        let sULy = 10;
+        arrS = HBBox.setBoxTable(
+            "S",
+            sizeS,
+            sULx,
+            sULy,
+            HBObjectDrawableArray.DEFAULT_W_ST,
+            HBObjectDrawableArray.DEFAULT_H,
+            HBObjectDrawableArray.DEFAULT_COLOR_ST,
+            "symbol table"
+        );
+        //
+        HBObjectDrawableArray.colorCoding(
+            sULx,
+            sULy + sizeS * HBObjectDrawableArray.DEFAULT_H, [
+                [
+                    "int",
+                    HBObjectDrawableArray.DEFAULT_COLOR_TYPE_PRIMITIVE
+                ],
+                [
+                    "Garbage",
+                    HBObjectDrawableArray.DEFAULT_COLOR_TYPE_GARBAGE
+                ]
+            ]
+        );
+        // ==== A
+
+
+        // objects created by new
+        o_o1 = HBBoxObject.Factory(arrM,
+            "o_o1", // id
+            l_o1_0, // location
+            3, // length
+            colorInt
+        );
+        o_o2 = HBBoxObject.Factory(arrM,
+            "o_o2", // id
+            l_o2_0, // location
+            2, // length
+            colorInt
+        );
+    } // stepByStepInit
+
+
+    // ==========
+    // steps ==== V
+    // ==========
+    //
+    arrSteps[c_start] = (
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_start, isForward);
+            // visibility
+            hbPlusMinus.setVisibility(isForward, //
+                [arrS, arrM], //
+                []
+            );
+        }
+    );
+    //
+    arrSteps[c_int_a] = (
+        // int a;
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_int_a, isForward);
+            // action
+            HBObjectDrawableArray.declare(isForward, arrS, arrM,
+                s_a,
+                v_a,
+                "int: a",
+                colorInt
+            )
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                arrS.location(s_a),
+                arrM.location(v_a)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_a__4] = (
+        // a = 4;
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_a__4, isForward);
+            // action
+            arrM.location(v_a).setContent(isForward,
+                "4"
+            );
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                // arrS.location(s_a),
+                arrM.location(v_a)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_dec_arrInt] = (
+        // int[] arrInt;
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_dec_arrInt, isForward);
+            // action
+            HBObjectDrawableArray.declare(isForward, arrS, arrM,
+                s_arrInt,
+                v_arrInt,
+                "int[ ]: arrInt",
+                colorInt
+            );
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                arrS.location(s_arrInt),
+                arrM.location(v_arrInt)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_arrInt_new_3] = (
+        // arrInt = new int[3];
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_arrInt_new_3, isForward);
+            // action
+            HBObjectDrawableArray.assign2Object(isForward, arrM,
+                // a = new ObjcetA(..);
+                v_arrInt,
+                o_o1,
+                0,
+                0
+            );
+            arrM.location(l_o1_0).setContentColor(isForward,
+                "0",
+                colorInt
+            );
+            arrM.location(l_o1_1).setContentColor(isForward,
+                "0",
+                colorInt
+            );
+            arrM.location(l_o1_2).setContentColor(isForward,
+                "0",
+                colorInt
+            );
+            // visibility
+            hbPlusMinus.setVisibility(isForward, //
+                [o_o1], //
+                []
+            );
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                o_o1,
+                arrM.location(l_o1_0),
+                arrM.location(l_o1_1),
+                arrM.location(l_o1_2)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_arrInt_0__8] = (
+        // arrInt[0] = 8;
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_arrInt_0__8, isForward);
+            // action
+            arrM.location(l_o1_0).setContent(isForward,
+                "8"
+            );
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                arrM.location(l_o1_0)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_arrInt_2__5] = (
+        // arrInt[2] = 5;
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_arrInt_2__5, isForward);
+            // action
+            arrM.location(l_o1_2).setContent(isForward,
+                "5"
+            );
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                arrM.location(l_o1_2)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_arrInt_1__7] = (
+        // arrInt[1] = 7;
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_arrInt_1__7, isForward);
+            // action
+            arrM.location(l_o1_1).setContent(isForward,
+                "7"
+            );
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                arrM.location(l_o1_1)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_arrInt_0__a] = (
+        // arrInt[0] = a;
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_arrInt_0__a, isForward);
+            // action
+            arrM.location(l_o1_0).setContent(isForward,
+                arrM.location(v_a).getContent()
+            );
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                arrM.location(v_a),
+                arrM.location(l_o1_0)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_a__9] = (
+        // a = 9;
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_a__9, isForward);
+            // action
+            arrM.location(v_a).setContent(isForward,
+                "9"
+            );
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                arrM.location(v_a)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_arrInt_0__arrInt_2] = (
+        // arrInt[0] = arrInt[2];
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_arrInt_0__arrInt_2, isForward);
+            // action
+            arrM.location(l_o1_0).setContent(isForward,
+                arrM.location(l_o1_2).getContent()
+            );
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                arrM.location(l_o1_0)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_arrInt_new_2_pre] = (
+        // arrInt = new int[2];
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_arrInt_new_2_pre, isForward);
+            hbPlusMinus.setHighlight(isForward, [
+                // keep
+            ]);
+        }
+    );
+    //
+    arrSteps[c_arrInt_new_2] = (
+        // arrInt = new int[2];
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_arrInt_new_2, isForward);
+            //
+            o_o1.setGarbage(isForward, true);
+            HBObjectDrawableArray.assign2Object(isForward, arrM,
+                // a = new ObjcetA(..);
+                v_arrInt,
+                o_o2,
+                0,
+                0
+            );
+            arrM.location(l_o2_0).setContentColor(isForward,
+                "0",
+                colorInt
+            );
+            arrM.location(l_o2_1).setContentColor(isForward,
+                "0",
+                colorInt
+            );
+            // visibility
+            hbPlusMinus.setVisibility(isForward, //
+                [o_o2], //
+                []
+            );
+            hbPlusMinus.traceSkip(isForward);
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                o_o2,
+                arrM.location(l_o2_0),
+                arrM.location(l_o2_1)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_arrInt_0__1] = (
+        // arrInt[0] = 1;
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_arrInt_0__1, isForward);
+            // action
+            arrM.location(l_o2_0).setContent(isForward,
+                "1"
+            );
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                arrM.location(l_o2_0)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_arrInt_1__2] = (
+        // arrInt[1] = 2
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_arrInt_1__2, isForward);
+            // action
+            arrM.location(l_o2_1).setContent(isForward,
+                "2"
+            );
+            // highlight
+            hbPlusMinus.setHighlight(isForward, [
+                arrM.location(l_o2_1)
+            ]);
+        }
+    );
+    //
+    arrSteps[c_the_end] = (
+        // that's it
+        function (hbPlusMinus, isForward) {
+            'use strict';
+            hbPlusMinus.setState(c_the_end, isForward);
+            hbPlusMinus.setHighlight(isForward, []);
+        }
+    );
+</script><!-- F-bcd-invisible-inBoard-A.html -->
+<!-- board A -->
+<!-- + F-board-script-enable.html -->
+<script type="text/javascript">
+    'use strict';
+    isBoard = true;
+</script><!-- F-bcd-css-3.html -->
+<style type="text/css">
+    .hbColumn1o1 {
+        float: left;
+        width: 99%;
+        padding: 1px;
+    }
+
+    .hbColumn1o2l {
+        float: left;
+        width: 49%;
+        padding: 1px;
+    }
+
+    .hbColumn1o2r {
+        float: right;
+        width: 49%;
+        padding: 1px;
+    }
+
+    .hbColumn1o3 {
+        float: left;
+        width: 32%;
+        padding: 1px;
+    }
+
+    .hbColumn2o3 {
+        float: left;
+        width: 65%;
+        padding: 1px;
+    }
+
+
+    /*
+    .hbColumn {
+        float: left;
+        width: 30.33%;
+        padding: 10px;
+    }
+    */
+
+    /*
+    .hbRow:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    */
+</style>
+<!--  --><!-- F-head-body-A.html -->
+<script type="text/javascript">
+    $(function () {
+        prettyPrint();
+        softdev4uContent_init();
+        softdev4u_init();
+    });
+</script>
+
+
+<div onclick="softdev4u_hideOverlay();" class="softdev4u-overlay" style="position: absolute; left: 0px; top: 0px; height: 100vh; width: 100vw; z-index: 10; background: rgba(255, 255, 255, 0.5); display: none;"></div><div class="softdev4u-toc-div" style="left: 273.267px; bottom: 18px; display: none;"></div><div class="softdev4u-history-div" style="position: absolute; left: 200px; bottom: 18px; max-width: 50vw; max-height: 70vh; z-index: 11; background-color: red; display: none;"></div><div class="softdev4u-goto-div" style="position: absolute; left: 74.6333px; bottom: 18px; z-index: 11; display: none;"><input type="number" name="quantity" min="1" max="1"><button onclick="softdev4u_goToPage();">GO</button></div></body></html>
