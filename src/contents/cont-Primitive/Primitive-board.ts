@@ -1,6 +1,7 @@
 import type { Board } from '../../lib/board/board';
 import type { StepFn } from '../../lib/content/contentTypes';
 import { ZhbMemory } from '../../lib/board/ZhbMemory';
+// import { ZhbPoint } from '../../lib/board/ZhbPoint';
 
 /**
  * Visualization of the Java fragment:
@@ -91,10 +92,14 @@ arrSteps[i_0] = (board: Board): void => {
 const i_int_a = iCount++;
 arrSteps[i_int_a] = (): void => {
   // value changed
-  symbolTable.assignLiteral(stA, 'a : int');
+  // symbolTable.assignLiteral(stA, 'a : int');
+  // memory.assignLiteral(memA,'u');
+  symbolTable.declaration(stA, 'a : int',
+    memory, memA, 'u');
 
   // highlight
   symbolTable.highlight(stA, true);
+  memory.highlight(memA, true);
 };
 
 // a = 4;

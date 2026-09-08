@@ -1,5 +1,5 @@
+import { ZhbBox } from './ZhbBox';
 import { ZhbConstant } from './ZhbConstant';
-import { ZhbDrawable } from './ZhbDrawable';
 
 /**
  * ZhbLocation draws a memory location: a rectangle with two strings.
@@ -7,12 +7,13 @@ import { ZhbDrawable } from './ZhbDrawable';
  *  - `content` is centered inside the rectangle.
  *  - `locationNo` is placed at the left-center, just outside the rectangle.
  *
- * Reusable, stateful, animatable primitive. Visibility, highlight, and
- * animation are handled by the {@link ZhbDrawable} base via CSS classes on the
- * group; this class only builds the geometry. The `content` string can be
- * updated after mounting (e.g. when a value is written into the location).
+ * Extends {@link ZhbBox}: the base draws the rectangle, this class adds the two
+ * labels on top. Visibility, highlight, and animation are handled by the
+ * {@link ZhbDrawable} base via CSS classes on the group. The `content` string
+ * can be updated after mounting (e.g. when a value is written into the
+ * location).
  */
-export class ZhbLocation extends ZhbDrawable {
+export class ZhbLocation extends ZhbBox {
   /** Gap between the rectangle's left edge and the locationNo label. */
   private static readonly LABEL_GAP = 10;
 
@@ -31,14 +32,14 @@ export class ZhbLocation extends ZhbDrawable {
    * @param content Text shown centered inside the rectangle.
    */
   public constructor(
-    private readonly x: number,
-    private readonly y: number,
-    private readonly w: number,
-    private readonly h: number,
+    x: number,
+    y: number,
+    w: number,
+    h: number,
     private readonly locationNo: string,
     private content: string,
   ) {
-    super();
+    super(x, y, w, h);
   }
 
   /** @returns The location number label. */
@@ -50,6 +51,7 @@ export class ZhbLocation extends ZhbDrawable {
   public getContent(): string {
     return this.content;
   }
+
 
   /**
    * Update the content shown inside the rectangle. Safe to call before or after
@@ -65,20 +67,15 @@ export class ZhbLocation extends ZhbDrawable {
   }
 
   /**
-   * Build the rectangle, the centered content, and the left locationNo label.
+   * Build the rectangle (via {@link ZhbBox}), the centered content, and the
+   * left locationNo label.
    * @param group The group element to populate.
    */
   protected override build(group: SVGGElement): void {
-    const cy = this.y + this.h / 2;
-
     // Rectangle.
-    const rect = document.createElementNS(ZhbConstant.SVG_NS, 'rect');
-    rect.setAttribute('x', String(this.x));
-    rect.setAttribute('y', String(this.y));
-    rect.setAttribute('width', String(this.w));
-    rect.setAttribute('height', String(this.h));
-    rect.setAttribute('class', 'zhb__shape');
-    group.appendChild(rect);
+    super.build(group);
+
+    const cy = this.y + this.h / 2;
 
     // locationNo: left-center, outside the rectangle.
     const label = document.createElementNS(ZhbConstant.SVG_NS, 'text');

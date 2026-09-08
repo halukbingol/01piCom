@@ -1,5 +1,7 @@
 import { ZhbDrawable } from './ZhbDrawable';
+import { ZhbLink } from './ZhbLink';
 import { ZhbLocation } from './ZhbLocation';
+import { ZhbPoint } from './ZhbPoint';
 
 export class ZhbMemory extends ZhbDrawable {
   private static readonly W_DEFAULT = 50;
@@ -47,6 +49,29 @@ export class ZhbMemory extends ZhbDrawable {
   }
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V instructions
+
+
+  // public declaration(
+  //   // st: ZhbMemory, 
+  //   stA: number, stValue: string,
+  //   mem: ZhbMemory, memA: number, memValue: string
+  // ): void {
+  //   const stLoc = this.getLocation(stA);
+  //   const memLoc = mem.getLocation(memA);
+  //   stLoc.setContent(stValue);
+  //   memLoc.setContent(memValue);
+  //   // this.setContent(stA, stValue);
+  //   // mem.setContent(memA, memValue);
+
+  //   const pBg = stLoc.getPointUpperRight();
+  //   const pEn = memLoc.getPointMiddleLeft();
+  //   const pC1 = new ZhbPoint(pBg.x+10, pBg.y);
+  //   const pC2 = new ZhbPoint(pEn.x-10, pEn.y-10);
+  //   const linkST2Mem = new ZhbLink(pBg, pC1, pC2, pEn, true, false);
+  //   stLoc.setLink(stA, linkST2Mem);
+  //   linkST2Mem.setVisible(true);
+  // }
+
   public assignLiteral(i: number, value: string): void {
     this.setContent(i, value);
   }
