@@ -1,6 +1,7 @@
 import type { Board } from '../../lib/board/board';
 import type { StepFn } from '../../lib/content/contentTypes';
 import { ZhbMemory } from '../../lib/board/ZhbMemory';
+import { ZhbDrawable } from '../../lib/board';
 // import { ZhbPoint } from '../../lib/board/ZhbPoint';
 
 /**
@@ -90,14 +91,17 @@ arrSteps[i_0] = (board: Board): void => {
 
 // int a;
 const i_int_a = iCount++;
-arrSteps[i_int_a] = (): void => {
+arrSteps[i_int_a] = (board: Board): void => {
   // value changed
   // symbolTable.assignLiteral(stA, 'a : int');
   // memory.assignLiteral(memA,'u');
-  symbolTable.declaration(stA, 'a : int',
-    memory, memA, 'u');
+  symbolTable.declareInit(board,
+    stA, 'a : int',
+    memory, memA, 'u'
+  );
 
   // highlight
+  ZhbDrawable.highlightAllOff();
   symbolTable.highlight(stA, true);
   memory.highlight(memA, true);
 };
@@ -109,21 +113,21 @@ arrSteps[i_aE4] = (): void => {
   memory.assignLiteral(memA, '4');
 
   // highlight
-  symbolTable.highlight(stA, false);
-  //
+  ZhbDrawable.highlightAllOff();
   memory.highlight(memA, true);
 };
 
 // int b = 7;
 const i_int_bE7 = iCount++;
-arrSteps[i_int_bE7] = (): void => {
+arrSteps[i_int_bE7] = (board): void => {
   // value changed
-  symbolTable.assignLiteral(stB, 'b : int');
-  memory.assignLiteral(memB, '7');
+  symbolTable.declareInit(board,
+    stB, 'b : int',
+    memory, memB, '7'
+  );
 
   // highlight
-  memory.highlight(memA, false);
-  //
+  ZhbDrawable.highlightAllOff();
   symbolTable.highlight(stB, true);
   memory.highlight(memB, true);
 };

@@ -1,4 +1,5 @@
-public class Primitive{
+package assets;
+public class PrimitiveTypes{
 
     public static void main(String[] args){
         int a;

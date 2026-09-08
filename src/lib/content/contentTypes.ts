@@ -1,17 +1,5 @@
 import type { Board } from '../board/board';
-
-/**
- * Context passed to a board step when it is executed.
- */
-export interface StepContext {
-  /**
-   * Whether this execution is a forward smooth transition (may animate) or part
-   * of an instant replay (reset / fast-forward / jump).
-   */
-  readonly animate: boolean;
-  /** The `animationMax` duration to use when animating (seconds). */
-  readonly animationMax: number;
-}
+import type { StepContext } from './stepContext';
 
 /**
  * A board step in the DIRECT-ACCESS model: an imperative function that
@@ -82,6 +70,12 @@ export interface ContentConfig {
   /** Filename of the trace file (omitted if `trace` hidden). */
   readonly fileTrace?: string;
   /**
+   * Filename of the download manifest (omitted when the content offers no
+   * downloads). Each non-comment line of that file is a path, relative to the
+   * content's `assets/` directory, to a file offered in the `download` pane.
+   */
+  readonly fileDownload?: string;
+  /**
    * Panes explicitly marked `invisible` in `config.txt`. All panes are visible
    * by default; a pane listed here is hidden. Empty when none are hidden.
    */
@@ -108,6 +102,12 @@ export interface ContentModule {
   readonly trace: string;
   /** Board step functions (one per state), executed by the executor. */
   readonly steps: StepFn[];
+  /**
+   * Paths — each relative to this content's `assets/` directory — of files
+   * offered for download in the `download` pane. Parsed from the manifest named
+   * by `config.fileDownload`. Absent or empty when the content offers none.
+   */
+  readonly downloads?: readonly string[];
   /**
    * Hook to reset the board module's own object registry, called by the
    * executor before every replay from state 0, so replayed steps reference

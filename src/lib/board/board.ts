@@ -1,4 +1,4 @@
-import type { ZhbDrawable } from './ZhbDrawable';
+import { ZhbDrawable } from './ZhbDrawable';
 
 /**
  * Board owns the board's `<svg>` surface and the set of drawables currently
@@ -14,7 +14,7 @@ import type { ZhbDrawable } from './ZhbDrawable';
 export class Board {
   /** The `<svg>` element this board manages. */
   private readonly svg: SVGSVGElement;
-
+  
   /** Drawables currently mounted, in insertion order. */
   private readonly liveSet: Set<ZhbDrawable> = new Set();
 

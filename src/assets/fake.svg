@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .bg { fill: #0b1015; }
+    .fg { fill: #17b8b0; }
+    @media (prefers-color-scheme: dark) {
+      .fg { fill: #35e0d8; }
+    }
+  </style>
+  <rect class="bg" width="32" height="32" rx="6" />
+  <!-- "01pi" mark: a zero and a one, echoing the app name -->
+  <text class="fg" x="16" y="21"
+        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+        font-size="15" font-weight="700" text-anchor="middle">01</text>
+</svg>

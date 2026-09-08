@@ -3,15 +3,16 @@
  */
 export type {
   StepFn,
-  StepContext,
   ContentConfig,
   ContentModule,
   PaneName,
 } from './contentTypes';
+export type { StepContext } from './stepContext';
 export {
   parseConfig,
   parseHighlight,
   parsePaneVisibility,
+  parseDownloadManifest,
   countListItems,
   languageFromFilename,
 } from './contentConfig';

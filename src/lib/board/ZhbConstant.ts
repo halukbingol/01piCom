@@ -18,6 +18,6 @@ export class ZhbConstant {
   /**
    * Default content appears at `http://localhost:8080/`
    */
-  public static readonly DEFAULT_CONTENT = 'cont-Primitive';
+  public static readonly DEFAULT_CONTENT = 'PrimitiveTypes';
 
 }

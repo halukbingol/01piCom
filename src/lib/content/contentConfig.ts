@@ -61,6 +61,7 @@ export function parseConfig(text: string): ContentConfig {
   const fileDescription = map.get('fileDescription');
   const fileBoard = map.get('fileBoard');
   const fileTrace = map.get('fileTrace');
+  const fileDownload = map.get('fileDownload');
 
   // Each pane must either define its file(s) or be marked invisible.
   const requireFilesOrHidden = (
@@ -91,8 +92,35 @@ export function parseConfig(text: string): ContentConfig {
     fileDescription,
     fileBoard: fileBoard ?? '',
     fileTrace,
+    fileDownload,
     hiddenPanes,
   };
+}
+
+/**
+ * Parse a download-manifest file into a list of asset paths.
+ *
+ * Each line is a path, relative to the content's `assets/` directory, to a file
+ * offered in the `download` pane. A line whose first column is `#` is a comment
+ * and is skipped; blank / whitespace-only lines are skipped. Every other line is
+ * trimmed and kept verbatim as a relative path.
+ *
+ * @param text Raw manifest file contents.
+ * @returns The relative asset paths, in file order.
+ */
+export function parseDownloadManifest(text: string): string[] {
+  const paths: string[] = [];
+  for (const raw of text.split(/\r?\n/)) {
+    if (raw.startsWith('#')) {
+      continue;
+    }
+    const path = raw.trim();
+    if (path === '') {
+      continue;
+    }
+    paths.push(path);
+  }
+  return paths;
 }
 
 /**

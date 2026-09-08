@@ -17,6 +17,8 @@ export interface ContentPanes {
   readonly description: HTMLElement | null;
   /** `#trace` pane. */
   readonly trace: HTMLElement | null;
+  /** `#download` pane. */
+  readonly download: HTMLElement | null;
 }
 
 /**
@@ -240,6 +242,34 @@ export class ZintStepByStepContent extends ZintStepByStepClient {
     this.descriptionPerStep = Array.from(holder.children)
       .filter((el) => el.tagName.toLowerCase() === 'li')
       .map((li) => li.innerHTML);
+
+    this.renderDownloads();
+  }
+
+  /**
+   * Fill the `download` pane with one link per manifest entry. Each entry is a
+   * path relative to the content's `assets/` directory; the served file lives at
+   * `contents/<id>/assets/<path>` (the content id is its directory name). The
+   * link text is the file's basename, with the full relative path as a tooltip.
+   */
+  private renderDownloads(): void {
+    const pane = this.panes.download;
+    if (pane === null) {
+      return;
+    }
+    pane.replaceChildren();
+    const base = `contents/${encodeURIComponent(this.module.id)}/assets/`;
+    for (const relPath of this.module.downloads ?? []) {
+      const segments = relPath.split('/').filter((s) => s !== '');
+      const basename = segments[segments.length - 1] ?? relPath;
+      const link = document.createElement('a');
+      link.className = 'download-link';
+      link.href = base + segments.map(encodeURIComponent).join('/');
+      link.setAttribute('download', basename);
+      link.title = relPath;
+      link.textContent = basename;
+      pane.appendChild(link);
+    }
   }
 
   /**

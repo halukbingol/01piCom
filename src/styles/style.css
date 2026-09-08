@@ -303,6 +303,28 @@ body {
   line-height: 1.5;
 }
 
+/* Download pane: one file link per line. */
+.download-link {
+  display: block;
+  padding: 0.15rem 0;
+  color: var(--accent);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.download-link::before {
+  content: '\2193\00a0'; /* down arrow + nbsp */
+  color: var(--text-dim);
+}
+
+.download-link:hover,
+.download-link:focus-visible {
+  color: var(--accent-strong);
+  text-decoration: underline;
+}
+
 .page-bottom {
   display: flex;
 }

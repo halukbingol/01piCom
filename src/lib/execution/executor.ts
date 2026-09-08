@@ -1,5 +1,7 @@
 import type { Board } from '../board/board';
-import type { StepFn, StepContext } from '../content/contentTypes';
+import { ZhbDrawable } from '../board/ZhbDrawable';
+import type { StepFn } from '../content/contentTypes';
+import type { StepContext } from '../content/stepContext';
 
 /**
  * StepExecutor is the execution system of the direct-access model.
@@ -68,6 +70,9 @@ export class StepExecutor {
     if (step === undefined) {
       return;
     }
+    // Every step starts from a clean highlight state; a step re-asserts its own
+    // highlights as it runs. This keeps forward and replay execution identical.
+    ZhbDrawable.highlightAllOff();
     const ctx: StepContext = { animate, animationMax: this.animationMax };
     step(this.board, ctx);
   }

@@ -48,6 +48,11 @@ export abstract class ZhbDrawable {
   /** CSS class applied to the group while the object is highlighted. */
   private static readonly CLASS_HIGHLIGHTED = 'zhb--highlighted';
 
+  /** List of ZhbDrawable that have highlight on */
+  private static arrHighlighted: ZhbDrawable[] = [];
+
+
+
   /** Whether the object is shown on the board. Default true. */
   private isVisible = true;
   /** Whether the object is drawn highlighted. Default false. */
@@ -91,13 +96,27 @@ export abstract class ZhbDrawable {
 
   /**
    * Set highlight and reflect it on the mounted group.
+   * If highlight is on, add to the list of `arrHighlighted`
    * @param value The new highlight state.
    * @returns The value set.
    */
   public setHighlighted(value: boolean): boolean {
     this.isHighlighted = value;
     this.applyClasses();
+    if (value === true) {
+      ZhbDrawable.arrHighlighted.push(this);
+    }
     return value;
+  }
+
+  /**
+   * Turn off all highlighted ZhbDrawables
+   */
+  public static highlightAllOff() {
+    ZhbDrawable.arrHighlighted.forEach((item) => {
+      item.setHighlighted(false);
+    });
+    ZhbDrawable.arrHighlighted = [];
   }
 
   /**
@@ -187,7 +206,7 @@ export abstract class ZhbDrawable {
     _group: SVGGElement,
     _options: ZhbAnimateOptions,
   ): () => void {
-    return (): void => {};
+    return (): void => { };
   }
 
   /**

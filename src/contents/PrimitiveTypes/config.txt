@@ -1,0 +1,24 @@
+# config.txt for Primitive
+
+# title
+title,Primitive Types
+
+# required
+stepsNO,6
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ download pane
+# download,invisible
+fileDownload,PrimitiveTypes-download.txt
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ code pane
+fileCode,PrimitiveTypes-code.java
+fileCodeHighlight,PrimitiveTypes-highlight.txt
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ description pane
+fileDescription,PrimitiveTypes-desc.html
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ board pane
+fileBoard,PrimitiveTypes-board.ts
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ trace pane
+fileTrace,PrimitiveTypes-trace.txt

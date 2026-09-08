@@ -7,7 +7,7 @@ import { content as contentMemory } from '../contents/content-memory';
 import { content as contentLLS } from '../contents/content-LLS';
 import { content as contentTestB } from '../contents/contTestB';
 import { content as contentArrays } from '../contents/content-Arrays';
-import { content as contentPrimitive } from '../contents/cont-Primitive';
+import { content as contentPrimitive } from '../contents/PrimitiveTypes';
 
 /** Registry of available contents, keyed by id. */
 const CONTENTS: Record<string, ContentModule> = {
@@ -15,7 +15,7 @@ const CONTENTS: Record<string, ContentModule> = {
   'content-LLS': contentLLS,
   contTestB: contentTestB,
   'content-Arrays': contentArrays,
-  'cont-Primitive': contentPrimitive,
+  PrimitiveTypes: contentPrimitive,
 };
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A content
 
@@ -63,9 +63,19 @@ function main(): void {
   const codePane = document.getElementById('code');
   const descPane = document.getElementById('description');
   const tracePane = document.getElementById('trace');
+  const downloadPane = document.getElementById('download');
 
   if (nav === null || svg === null || !(svg instanceof SVGSVGElement)) {
     throw new Error('Required navigation/board elements are missing.');
+  }
+
+  // Each registry key must equal its module's own `id` (which must in turn equal
+  // the content's directory name — enforced at build time). `?content=<key>`
+  // and the download pane's asset URLs both key off `id`, so drift breaks them.
+  for (const [key, mod] of Object.entries(CONTENTS)) {
+    if (key !== mod.id) {
+      console.error(`[content] registry key '${key}' != module id '${mod.id}'.`);
+    }
   }
 
   const params = new URLSearchParams(window.location.search);
@@ -101,6 +111,7 @@ function main(): void {
     board: svg,
     description: descPane,
     trace: tracePane,
+    download: downloadPane,
   });
 
   new ZintStepByStepGUI({

@@ -31,9 +31,9 @@ stripped.
 Without it, the markup's build-time defaults are kept.
 
 **Panes.** For each of `code`, `board`, `description`, and `trace`, the config
-must EITHER define the pane's related file(s) OR mark the pane `invisible`. (The
-`download` and `debug` panes have no files; they are simply visible unless marked
-invisible.)
+must EITHER define the pane's related file(s) OR mark the pane `invisible`. The
+`download` pane's file (`fileDownload`) is optional — see below. The `debug` pane
+has no file. All panes are visible unless marked `invisible`.
 
 Example:
 
@@ -137,6 +137,50 @@ Example (`MyContent-trace.txt`):
 
 At state 0 only the two state-0 lines show; at state 4 all six show.
 
+### `fileDownload`
+
+Feeds the `download` pane. Optional: give `fileDownload,<name>` to offer files
+for download, or omit it (the pane then shows nothing; add `download,invisible`
+to hide the pane entirely).
+
+The named file is a **manifest**: each line is a path to a file to offer,
+**relative to this content's `assets/` directory**. A line whose first column is
+`#` is a comment; blank lines are skipped. Every other line is trimmed and used
+verbatim.
+
+Put the files under `src/contents/<id>/assets/` (subdirectories allowed). The
+build copies that tree to `dist/contents/<id>/assets/…` — this is why a content's
+**`id` (in `index.ts`) must equal its directory name**. Each manifest line
+becomes a link in the pane, labelled with the file's basename (full relative path
+on hover); clicking it downloads the file.
+
+Example (`MyContent-download.txt`):
+
+```txt
+# files offered in the download pane (paths relative to assets/)
+MyContent.java
+handout/notes.pdf
+```
+
+with:
+
+```
+src/contents/my-content/assets/MyContent.java
+src/contents/my-content/assets/handout/notes.pdf
+```
+
+In `index.ts`, parse it into `downloads`:
+
+```ts
+import downloadText from './MyContent-download.txt';
+import { parseDownloadManifest } from '../../lib/content/contentConfig';
+// ...
+export const content: ContentModule = {
+  // ...
+  downloads: parseDownloadManifest(downloadText),
+};
+```
+
 ### `board.ts`
 
 Exports `steps: StepFn[]` (one entry per state, `steps.length === stepsNO`) and
@@ -217,6 +261,13 @@ export const content: ContentModule = {
 };
 ```
 
+**`id` must equal the content's directory name.** The download pane resolves
+asset URLs as `contents/<id>/assets/…`, and the build copies `assets/` by
+directory name, so a mismatch silently 404s every download link. The build
+enforces this (`assertContentIdsMatchDirs` in `webpack.config.js`) and fails with
+a clear message; `src/pages/index.ts` also `console.error`s if a registry key
+differs from its module's `id`.
+
 ## Register and select a content
 
 Add the content to the registry in `src/pages/index.ts`:
@@ -233,6 +284,32 @@ const CONTENTS = {
 Select at runtime with the `?content=<id>` query parameter, e.g.
 `http://localhost:8080/?content=content-LLD-2To0`. Without it, the first content
 is used.
+
+**The registry key must equal the module's `id`** (and therefore the directory
+name). `?content=` and the download pane both key off `id`.
+
+## Renaming a content
+
+The content `id`, its directory name, and its registry key must stay identical,
+and several files reference the old name. Rename **all** of these together:
+
+1. **The directory** — `src/contents/<old>/` → `src/contents/<new>/`.
+2. **The per-role files inside**, if you name them after the content
+   (`<old>-board.ts`, `<old>-code.<ext>`, `<old>-highlight.txt`,
+   `<old>-desc.html`, `<old>-trace.txt`, `<old>-download.txt`), and every
+   `import` of them in `index.ts`. Stage the delete + add together so git records
+   a rename.
+3. **`config.txt`** — any `fileCode` / `fileBoard` / `fileCodeHighlight` /
+   `fileDescription` / `fileTrace` / `fileDownload` line whose filename changed.
+4. **`id:` in `index.ts`** → `'<new>'`.
+5. **The registry key in `src/pages/index.ts`** → `<new>`.
+6. **`ZhbConstant.DEFAULT_CONTENT`** — only if this content was the default.
+7. **Asset references** — links in `<new>-download.txt` still point at files under
+   `assets/`; rename those files too if they carried the old name.
+
+Then `npm run build`: `assertContentIdsMatchDirs` fails loudly if step 4 (or 1)
+was missed, and the console shows an error if step 5 was missed. Steps 4–5 are
+what the download pane is most sensitive to — a partial rename 404s its links.
 
 ## Validation
 

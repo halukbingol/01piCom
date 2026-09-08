@@ -1,6 +1,11 @@
 <li>Start with empty Symbol Table and Memory.</li>
+
 <li>Declare variable `a` as `int`.</li>
+
 <li>Assign the literal 4 to `a`.</li>
+
 <li>Declare variable `b` as `int` and assign 7 to it at one step.</li>
+
 <li>Change the content of `b` to `8`</li>
+
 <li>Assign the a copy of the content of `a` to `b`.</li>
