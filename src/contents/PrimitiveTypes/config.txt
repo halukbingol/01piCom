@@ -1,4 +1,4 @@
-# config.txt for Primitive
+# config.txt for PrimitiveTypes
 
 # title
 title,Primitive Types

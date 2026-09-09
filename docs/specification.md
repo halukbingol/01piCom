@@ -48,19 +48,19 @@ a jsdom + Jest integration test that runs against the built bundle.
 
 ```
                     ┌───────────────────────────┐
-   user input  ──►  │   ZintStepByStepGUI       │   SVG button bar in
+   user input  ──►  │   ZhbStepByStepGUI       │   SVG button bar in
   (click / key)     │   (finite-state machine)  │   #div-navigation
                     └────────────┬──────────────┘
                                  │ mirrors every transition
                                  ▼
                     ┌───────────────────────────┐
-                    │   ZintStepByStepClient     │   abstract base
+                    │   ZhbStepByStepClient     │   abstract base
                     │   (setState + hooks)       │
                     └────────────┬──────────────┘
                                  │ extended by
                                  ▼
                     ┌───────────────────────────┐
-                    │   ZintStepByStepContent    │   renders panes
+                    │   ZhbStepByStepContent    │   renders panes
                     │   code · board · desc ·    │
                     │   trace                    │
                     └────────────┬──────────────┘
@@ -101,9 +101,9 @@ a jsdom + Jest integration test that runs against the built bundle.
 | `ZhbNode`               | `board`      | Box with centered content + id on the top edge.    |
 | `NodeNull`              | `board`      | Null node marker (thick short bar).                |
 | `ZhbNodeLLS`            | `board`      | List node; link to null (ground) or `setLink`.     |
-| `ZintStepByStepClient`  | `navigation` | Abstract content base driven by the GUI.           |
-| `ZintStepByStepGUI`     | `navigation` | SVG navigation + finite-state machine.             |
-| `ZintStepByStepContent` | `navigation` | Concrete client rendering the four panes.          |
+| `ZhbStepByStepClient`  | `navigation` | Abstract content base driven by the GUI.           |
+| `ZhbStepByStepGUI`     | `navigation` | SVG navigation + finite-state machine.             |
+| `ZhbStepByStepContent` | `navigation` | Concrete client rendering the four panes.          |
 | `contentTypes`          | `content`    | `StepFn`, `StepContext`, `ContentConfig`, etc.     |
 | `contentConfig`         | `content`    | Parsers/validators for config, highlight, desc.    |
 
@@ -165,7 +165,7 @@ activate the focused control.
 
 ## 4. Client contract
 
-`ZintStepByStepClient` is abstract. A content subclass implements:
+`ZhbStepByStepClient` is abstract. A content subclass implements:
 
 - **`getNumberOfStates(): number`** (required) — the total state count `S`; read
   once by the GUI at construction.
@@ -174,7 +174,7 @@ activate the focused control.
 
 Default hook implementations (`reset`, `noAction`, `smoothNext`, `fastForward`,
 `jumpTo`) delegate to `setState` so a subclass overrides only what it needs.
-`ZintStepByStepContent` overrides `smoothNext` to enable animation for that one
+`ZhbStepByStepContent` overrides `smoothNext` to enable animation for that one
 transition.
 
 ---
@@ -273,7 +273,7 @@ strings) and the board steps + reset hook.
 
 ### 5.7 Validation
 
-At load, `ZintStepByStepContent` checks board step count, highlight line count,
+At load, `ZhbStepByStepContent` checks board step count, highlight line count,
 and description `<li>` count all equal `stepsNO`, emitting a `console.error` for
 any mismatch. Authoring errors surface immediately in the console.
 

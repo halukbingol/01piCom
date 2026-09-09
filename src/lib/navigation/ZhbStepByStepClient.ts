@@ -1,7 +1,7 @@
 /**
- * ZintStepByStepClient is the base class that all content extends.
+ * ZhbStepByStepClient is the base class that all content extends.
  *
- * The GUI ({@link ZintStepByStepGUI}) drives a client: every state change the
+ * The GUI ({@link ZhbStepByStepGUI}) drives a client: every state change the
  * GUI performs is mirrored by a call into the client. A concrete content class
  * (`Content_X`) subclasses this and overrides the hooks it cares about — at
  * minimum {@link setState}, which is called for every resulting state.
@@ -9,7 +9,7 @@
  * The default implementations are deliberately side-effect free so a subclass
  * can override only what it needs.
  */
-export abstract class ZintStepByStepClient {
+export abstract class ZhbStepByStepClient {
   /**
    * The number of states this content defines, including state 0. The GUI reads
    * this once at construction to lay out its state buttons.

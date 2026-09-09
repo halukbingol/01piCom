@@ -1,14 +1,14 @@
 import { ZhbConstant } from '../board/ZhbConstant';
-import { ZintStepByStepClient } from './ZintStepByStepClient';
+import { ZhbStepByStepClient } from './ZhbStepByStepClient';
 
 /**
- * Options controlling a {@link ZintStepByStepGUI} instance.
+ * Options controlling a {@link ZhbStepByStepGUI} instance.
  */
-export interface ZintGuiOptions {
+export interface ZhbGuiOptions {
   /** Container element that hosts the navigation SVG (e.g. `#div-navigation`). */
   readonly container: HTMLElement;
   /** The content/client this GUI drives. */
-  readonly client: ZintStepByStepClient;
+  readonly client: ZhbStepByStepClient;
   /** Optional debug list element; when present, debug output is appended here. */
   readonly debugList?: HTMLElement | null;
   /** Whether debug mode is on (reveals + logs to the debug pane). */
@@ -16,15 +16,15 @@ export interface ZintGuiOptions {
 }
 
 /**
- * ZintStepByStepGUI renders a step navigator as a single SVG of circular
+ * ZhbStepByStepGUI renders a step navigator as a single SVG of circular
  * buttons inside its container and runs the finite-state machine described in
- * the spec. It drives any {@link ZintStepByStepClient} (content extends the
+ * the spec. It drives any {@link ZhbStepByStepClient} (content extends the
  * client), mirroring every state change onto it.
  *
  * States are numbered 0..S-1 where S = client.getNumberOfStates(). The GUI is
  * fully container-scoped (no global ids), so multiple instances coexist.
  */
-export class ZintStepByStepGUI {
+export class ZhbStepByStepGUI {
   /** Total number of states, including state 0 (the spec's `S`). */
   public readonly stateNO: number;
 
@@ -32,7 +32,7 @@ export class ZintStepByStepGUI {
   private readonly container: HTMLElement;
 
   /** The content this GUI drives. */
-  private readonly client: ZintStepByStepClient;
+  private readonly client: ZhbStepByStepClient;
 
   /** Optional debug list element. */
   private readonly debugList: HTMLElement | null;
@@ -59,9 +59,9 @@ export class ZintStepByStepGUI {
   private static readonly HEIGHT = 60;
 
   /**
-   * @param options See {@link ZintGuiOptions}.
+   * @param options See {@link ZhbGuiOptions}.
    */
-  public constructor(options: ZintGuiOptions) {
+  public constructor(options: ZhbGuiOptions) {
     this.container = options.container;
     this.client = options.client;
     this.debugList = options.debugList ?? null;
@@ -200,23 +200,23 @@ export class ZintStepByStepGUI {
     this.container.replaceChildren();
 
     const count = this.stateNO;
-    const step = ZintStepByStepGUI.BTN_R * 2 + ZintStepByStepGUI.GAP;
+    const step = ZhbStepByStepGUI.BTN_R * 2 + ZhbStepByStepGUI.GAP;
     // prev + states + next, laid left to right.
     const totalButtons = count + 2;
     const width =
-      ZintStepByStepGUI.PAD * 2 +
-      totalButtons * (ZintStepByStepGUI.BTN_R * 2) +
-      (totalButtons - 1) * ZintStepByStepGUI.GAP;
+      ZhbStepByStepGUI.PAD * 2 +
+      totalButtons * (ZhbStepByStepGUI.BTN_R * 2) +
+      (totalButtons - 1) * ZhbStepByStepGUI.GAP;
 
     const svg = document.createElementNS(ZhbConstant.SVG_NS, 'svg');
-    svg.setAttribute('viewBox', `0 0 ${width} ${ZintStepByStepGUI.HEIGHT}`);
+    svg.setAttribute('viewBox', `0 0 ${width} ${ZhbStepByStepGUI.HEIGHT}`);
     svg.setAttribute('width', '100%');
-    svg.setAttribute('height', String(ZintStepByStepGUI.HEIGHT));
+    svg.setAttribute('height', String(ZhbStepByStepGUI.HEIGHT));
     svg.setAttribute('role', 'group');
     svg.setAttribute('aria-label', 'Step navigation');
 
-    const cy = ZintStepByStepGUI.HEIGHT / 2;
-    let cx = ZintStepByStepGUI.PAD + ZintStepByStepGUI.BTN_R;
+    const cy = ZhbStepByStepGUI.HEIGHT / 2;
+    let cx = ZhbStepByStepGUI.PAD + ZhbStepByStepGUI.BTN_R;
 
     // btnPrevious: left-pointing red triangle with a "-".
     this.drawTriangle(svg, cx, cy, 'previous', 'previous', 'left', '−');
@@ -247,7 +247,7 @@ export class ZintStepByStepGUI {
     direction: 'left' | 'right',
     glyph: string,
   ): void {
-    const r = ZintStepByStepGUI.BTN_R;
+    const r = ZhbStepByStepGUI.BTN_R;
     const g = this.makeControlGroup(nav, `${kind} button`);
 
     const tri = document.createElementNS(ZhbConstant.SVG_NS, 'polygon');
@@ -288,7 +288,7 @@ export class ZintStepByStepGUI {
     const circle = document.createElementNS(ZhbConstant.SVG_NS, 'circle');
     circle.setAttribute('cx', String(cx));
     circle.setAttribute('cy', String(cy));
-    circle.setAttribute('r', String(ZintStepByStepGUI.BTN_R));
+    circle.setAttribute('r', String(ZhbStepByStepGUI.BTN_R));
     circle.setAttribute('class', 'nav-state__circle');
     g.appendChild(circle);
 

@@ -21,8 +21,8 @@ const CONTENTS: Record<string, ContentModule> = {
 
 
 
-import { ZintStepByStepGUI } from '../lib/navigation/ZintStepByStepGUI';
-import { ZintStepByStepContent } from '../lib/navigation/ZintStepByStepContent';
+import { ZhbStepByStepGUI } from '../lib/navigation/ZhbStepByStepGUI';
+import { ZhbStepByStepContent } from '../lib/navigation/ZhbStepByStepContent';
 import { ZhbConstant } from '../lib/board/ZhbConstant';
 import type { ContentModule, PaneName } from '../lib/content/contentTypes';
 
@@ -106,7 +106,7 @@ function main(): void {
   // Debug mode: requested via ?debug, but suppressed if the content hides it.
   const debug = params.has('debug') && !hidden.has('debug');
 
-  const content = new ZintStepByStepContent(module, {
+  const content = new ZhbStepByStepContent(module, {
     code: codePane,
     board: svg,
     description: descPane,
@@ -114,7 +114,7 @@ function main(): void {
     download: downloadPane,
   });
 
-  new ZintStepByStepGUI({
+  new ZhbStepByStepGUI({
     container: nav,
     client: content,
     debugList,

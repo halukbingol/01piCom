@@ -7,18 +7,18 @@ This document explains the architecture, the finite-state machine, the reusable
 
 Navigation is composed of two cooperating classes plus content:
 
-- **`ZintStepByStepGUI`** (in `src/lib/navigation/`) renders itself as a single SVG of
+- **`ZhbStepByStepGUI`** (in `src/lib/navigation/`) renders itself as a single SVG of
   circular buttons inside `#div-navigation` and runs the finite-state machine.
   It reads the number of states once at construction from the client and drives
   the client on every transition.
 
-- **`ZintStepByStepClient`** (in `src/lib/navigation/`) is the abstract base class that all
+- **`ZhbStepByStepClient`** (in `src/lib/navigation/`) is the abstract base class that all
   content extends. The GUI mirrors every state change onto it via `setState(n)`
   plus the transition hooks (`reset`, `noAction`, `smoothNext`, `fastForward`,
   `jumpTo`).
 
-- **`ZintStepByStepContent`** (in `src/lib/navigation/`) is a reusable content renderer that
-  extends `ZintStepByStepClient`. Given a compiled `ContentModule`, it renders
+- **`ZhbStepByStepContent`** (in `src/lib/navigation/`) is a reusable content renderer that
+  extends `ZhbStepByStepClient`. Given a compiled `ContentModule`, it renders
   the `code`, `board`, `description`, and `trace` panes and steps the board
   through states. It validates the module against `stepsNO` at load
   (`console.error` on mismatch).
@@ -35,10 +35,10 @@ Navigation is composed of two cooperating classes plus content:
 btnNext / btnPrevious / btnState_X   (SVG buttons)
         │  delegated click + keydown, resolved by data-nav
         ▼
-ZintStepByStepGUI  ── FSM ──►  updates active button (class + aria-current)
+ZhbStepByStepGUI  ── FSM ──►  updates active button (class + aria-current)
         │
         ▼  mirrors every transition
-ZintStepByStepClient (ContentBoard)
+ZhbStepByStepClient (ContentBoard)
         │
         ▼  setState(n): clear board, replay steps[0..n]
    #board SVG
@@ -110,8 +110,8 @@ its own barrel `index.ts`:
 
 **`src/lib/navigation/`** — the engine:
 
-- `ZintStepByStepClient`, `ZintStepByStepGUI` — the navigation engine.
-- `ZintStepByStepContent` — the pane renderer driven by a `ContentModule`.
+- `ZhbStepByStepClient`, `ZhbStepByStepGUI` — the navigation engine.
+- `ZhbStepByStepContent` — the pane renderer driven by a `ContentModule`.
 
 **`src/lib/content/`** — content data:
 

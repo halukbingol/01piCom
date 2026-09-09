@@ -1,8 +1,8 @@
 /**
  * Navigation library barrel. Re-exports the FSM engine and content renderer.
  */
-export { ZintStepByStepClient } from './ZintStepByStepClient';
-export { ZintStepByStepGUI } from './ZintStepByStepGUI';
-export type { ZintGuiOptions } from './ZintStepByStepGUI';
-export { ZintStepByStepContent } from './ZintStepByStepContent';
-export type { ContentPanes } from './ZintStepByStepContent';
+export { ZhbStepByStepClient } from './ZhbStepByStepClient';
+export { ZhbStepByStepGUI } from './ZhbStepByStepGUI';
+export type { ZhbGuiOptions } from './ZhbStepByStepGUI';
+export { ZhbStepByStepContent } from './ZhbStepByStepContent';
+export type { ContentPanes } from './ZhbStepByStepContent';

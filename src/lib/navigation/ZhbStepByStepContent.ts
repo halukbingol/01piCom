@@ -1,4 +1,4 @@
-import { ZintStepByStepClient } from './ZintStepByStepClient';
+import { ZhbStepByStepClient } from './ZhbStepByStepClient';
 import type { ContentModule } from '../content/contentTypes';
 import { countListItems, parseHighlight } from '../content/contentConfig';
 import { parseTrace, traceLinesUpTo, type TraceLine } from '../content/trace';
@@ -22,7 +22,7 @@ export interface ContentPanes {
 }
 
 /**
- * ZintStepByStepContent binds a compiled {@link ContentModule} to the page
+ * ZhbStepByStepContent binds a compiled {@link ContentModule} to the page
  * panes and steps its board through states under the navigation GUI.
  *
  * ## Direct-access model
@@ -39,7 +39,7 @@ export interface ContentPanes {
  * instantly. Provided steps follow the determinism contract (see
  * `contentTypes.StepFn`), every path to a state produces the identical board.
  */
-export class ZintStepByStepContent extends ZintStepByStepClient {
+export class ZhbStepByStepContent extends ZhbStepByStepClient {
   private readonly module: ContentModule;
   private readonly panes: ContentPanes;
 

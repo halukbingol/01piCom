@@ -2,35 +2,40 @@
 
 A **content** is a self-contained lesson living under `src/contents/<id>/`. It
 supplies the code to display, the per-step highlighting, the per-step
-description, and the board drawing. The navigation engine and the four panes
-(`code`, `board`, `description`, `trace`) are shared infrastructure.
+description, and the board drawing. The navigation engine and the five panes
+(`code`, `board`, `description`, `trace`, `download`) are shared infrastructure.
 
 ## Directory layout of a content
 
 ```
-src/contents/content-LLS-2To0/
+src/contents/content-AAA/
+├── assets                     # download files
+|   └── download01.java        # download files
 ├── config.txt                 # CSV of parameters
-├── LinkedList.js              # fileCode: source shown in the code pane
-├── LinkedList.js-ch.txt       # fileCodeHighlight: highlighted lines per step
-├── LinkedList.js-decr.html    # fileDescription: one <li> per step
-├── LinkedList.js-trace.txt    # fileTrace: state@|@text lines
-├── board.ts                   # fileBoard: exports steps: StepFn[]
-└── index.ts                   # assembles a ContentModule from the above
+├── index.ts                   # assembles a ContentModule 
+├── AAA-board.ts               # fileBoard: exports steps: StepFn[]
+├── AAA-code.java              # fileCode: source shown in the code pane
+├── AAA-desc-src.html          # Description generated
+├── AAA-desc-src.md.           # Description source
+├── AAA-desc.html              # fileDescription: one <li> per step
+├── AAA-download.txt           # fileDownload: list of download files
+├── AAA-highlight.txt          # fileCodeHighlight: highlighted lines per step
+└── AAA-trace.txt              # fileTrace: state@|@text lines
 ```
 
 ### `config.txt`
 
 A CSV (key,value per line). `stepsNO` is the number of steps including step 0.
 
-**Comments.** `#` begins a comment that runs to the end of the line: a line
+- **Comments.** `#` begins a comment that runs to the end of the line: a line
 starting with `#` is a full comment line, and a `# ...` after a value is
 stripped.
 
-**Title.** An optional `title,<text>` line sets both the HTML page title
+- **Title.** An optional `title,<text>` line sets both the HTML page title
 (`document.title`) and the `#div-title` header text when this content is loaded.
 Without it, the markup's build-time defaults are kept.
 
-**Panes.** For each of `code`, `board`, `description`, and `trace`, the config
+- **Panes.** For each of `code`, `board`, `description`, and `trace`, the config
 must EITHER define the pane's related file(s) OR mark the pane `invisible`. The
 `download` pane's file (`fileDownload`) is optional — see below. The `debug` pane
 has no file. All panes are visible unless marked `invisible`.
@@ -38,78 +43,85 @@ has no file. All panes are visible unless marked `invisible`.
 Example:
 
 ```txt
-# config.txt
+# config.txt for PrimitiveTypes
 
-# html page title
-title,My Content
+# title
+title,Primitive Types
 
 # required
-stepsNO,3
+stepsNO,6
 
-# download pane
-download,invisible
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ download pane
+# download,invisible
+fileDownload,PrimitiveTypes-download.txt
 
-# code pane
-#code,invisible
-fileCode,MyContent.js
-fileCodeHighlight,MyContent.js-ch.txt
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ code pane
+fileCode,PrimitiveTypes-code.java
+fileCodeHighlight,PrimitiveTypes-highlight.txt
 
-# description pane
-#description,invisible
-fileDescription,MyContent.js-decr.html
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ description pane
+fileDescription,PrimitiveTypes-desc.html
 
-# board pane
-#board,invisible
-fileBoard,LinkedList-brd.ts
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ board pane
+fileBoard,PrimitiveTypes-board.ts
 
-# trace pane
-#trace,invisible
-fileTrace,MyContent.js-trace.txt
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ trace pane
+fileTrace,PrimitiveTypes-trace.txt
 ```
 
 #### Pane visibility
 
 The panes `code`, `description`, `board`, `download`, `trace`, and `debug` are
-visible by default. To hide one for this content, add a line naming the pane with
-the value `invisible` (e.g. `code,invisible`). A hidden pane needn't define its
-files. Any pane not listed stays visible.
+visible by default. 
+To hide one for this content, add a line naming the pane with
+the value `invisible` (e.g. `code,invisible`). 
+A hidden pane needn't define its files. 
+Any pane not listed stays visible.
 
 #### What is `?debug`?
 
 `?debug` is a URL query flag (e.g.
-`http://localhost:8080/?content=content-LLS&debug`). When present, it reveals the
-**debug pane** — a panel that logs each navigation action the FSM performs
-(`smooth-N`, `jumpTo-N`, resets). It's a developer aid for watching _which_ steps
-the navigation decides to run; end users normally don't need it. Because the
-debug pane is what `?debug` reveals, hiding `debug` in `config.txt`
-(`debug,invisible`) also suppresses `?debug` for that content — there's no pane to
-show.
+`http://localhost:8080/?content=content-LLS&debug`). 
+When present, it reveals the **debug pane** — 
+a panel that logs each navigation action the FSM performs
+(`smooth-N`, `jumpTo-N`, resets). 
+It's a developer aid for watching _which_ steps
+the navigation decides to run; end users normally don't need it. 
+Because the debug pane is what `?debug` reveals, 
+hiding `debug` in `config.txt` (`debug,invisible`) also suppresses `?debug` for that content — there's no pane to show.
 
 ### `fileCode`
 
-The source displayed in the `code` pane. Its extension names the language.
+The source displayed in the `code` pane. 
+Its extension names the language.
 Omit it (and `fileCodeHighlight`) only when `code` is `invisible`.
 
 ### `fileCodeHighlight`
 
 One line per step. Each line lists the lines to highlight for that step:
-`1,3,5-8` highlights 1, 3, 5, 6, 7, 8; `nop` highlights nothing. Lines starting
-with `#` are comments and are skipped. The number of step lines must equal
-`stepsNO`, otherwise a `console.error` is emitted at load.
+`1,3,5-8` highlights 1, 3, 5, 6, 7, 8; `nop` highlights nothing. 
+Lines starting with `#` are comments and are skipped. 
+The number of step lines must equal `stepsNO`, 
+otherwise a `console.error` is emitted at load.
 
 ### `fileDescription`
 
 An HTML fragment of top-level `<li>` items, one per step (count must equal
-`stepsNO`). At state k, the description pane shows **only the inside of the k-th
-`<li>`** — its inner HTML, which may contain paragraphs, nested lists, `<code>`,
-etc. For example, a `<li>` for a step can hold a `<p>` plus an `<ol>` of
+`stepsNO`). 
+At state k, the description pane shows **only the inside of the k-th
+`<li>`** — its inner HTML, 
+which may contain paragraphs, 
+nested lists, `<code>`, etc. 
+For example, a `<li>` for a step can hold a `<p>` plus an `<ol>` of
 sub-points, and all of it appears at that state.
 
 ### `fileTrace`
 
-Feeds the `trace` pane. Like `code`, `board`, and `description`, `trace` is a
-"define a file or set invisible" pane: either give `fileTrace,<name>` or add
-`trace,invisible`.
+Feeds the `trace` pane. 
+Like `code`, `board`, and `description`, `trace` is a
+"define a file or set invisible" pane: 
+either give `fileTrace,<name>` 
+or add `trace,invisible`.
 
 Each non-comment line has the form `state@|@text`, where `@|@` is the separator
 (`ZhbConstant.TRACE_SEPARATOR`). The first field is the state number; everything
@@ -313,7 +325,7 @@ what the download pane is most sensitive to — a partial rename 404s its links.
 
 ## Validation
 
-At load, `ZintStepByStepContent` checks the board step count, the highlight line
+At load, `ZhbStepByStepContent` checks the board step count, the highlight line
 count, and the description `<li>` count all equal `stepsNO`, logging a
 `console.error` for any mismatch — so authoring mistakes surface immediately in
 the console.
